@@ -3,7 +3,8 @@ package fr.sulfuris.dev.config;
 import fr.sulfuris.dev.main;
 public class currencyconfig {
     public static void setConfig(main plugin) {
-        plugin.config.addDefault("default-currency", "&6&l$");
+        plugin.config.addDefault("default-currency", "&1000&l$");
+        plugin.config.addDefault("default-currency-value", "1000");
         plugin.config.addDefault("default-currency-name", "Dollar");
         plugin.config.addDefault("default-currency-symbol", "$");
         plugin.config.addDefault("default-currency-decimal", ".");

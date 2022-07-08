@@ -61,4 +61,13 @@ public class Utils {
             length += space;
         }
     }
+
+    public static boolean isNumeric(String arg) {
+        try {
+            Integer.parseInt(arg);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

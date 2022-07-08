@@ -17,13 +17,16 @@ public final class main extends JavaPlugin {
     }
     @Override
     public void onEnable() {
-        this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Méliodas"));
-        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Config"));
-        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
+        this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));
         createConfig();
-
+        // add mainconfig & itemconfig
+        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Items"));
+        itemconfig.setConfig(this);
+        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
+        mainconfig.setConfig(this);
+        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Balance"));
         currencyconfig.setConfig(this);
-
+        this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Méliodas"));
     }
 
     public void createConfig() {
