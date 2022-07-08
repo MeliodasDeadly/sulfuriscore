@@ -2,6 +2,9 @@ package fr.sulfuris.dev;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.*;
+import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
 import java.util.Random;
@@ -30,6 +33,11 @@ public class Utils {
             return "";
         }
         return String.valueOf(l.getWorld().getName()) + ":" + l.getBlockX() + ":" + l.getBlockY() + ":" + l.getBlockZ();
+    }
+    public static void setPlayerData(Plugin plugin, Player player, String key, Object value, PersistentDataType dataType) {
+        if(player.getPersistentDataContainer().has(new NamespacedKey(plugin, key), dataType)){
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, key), dataType, value);
+        }
     }
 
     public static Location getLocationString(final String s) {

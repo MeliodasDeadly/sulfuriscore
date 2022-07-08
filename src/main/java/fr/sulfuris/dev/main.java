@@ -1,20 +1,21 @@
 package fr.sulfuris.dev;
 
 
+import fr.sulfuris.dev.config.currencyconfig;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import fr.sulfuris.dev.commands.*;
-import fr.sulfuris.dev.items.*;
+
 import java.util.logging.Level;
-import fr.sulfuris.dev.config.*;
 
 
 public final class main extends JavaPlugin {
 
     public static FileConfiguration config;
+
     public main() {
         this.config = this.getConfig();
     }
+
     @Override
     public void onEnable() {
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));
