@@ -1,0 +1,5 @@
+name: Sulfuris
+version: '${project.version}'
+main: fr.sulfuris.dev.sulfuris.Sulfuris
+api-version: 1.19
+description: SulfurisPL
