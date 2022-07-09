@@ -1,5 +1,19 @@
 name: Sulfuris
 version: '${project.version}'
-main: fr.sulfuris.dev.sulfuris.Sulfuris
-api-version: 1.19
+main: fr.sulfuris.dev.main
+api-version: 1.16
 description: SulfurisPL
+author: SulfurisDev
+url: www.sulfuris.fr
+commands:
+  store:
+    description: Store a message in a item
+    usage: /store <message>
+    aliases:
+      - store
+      - storemsg
+      - storemessage
+      - storemsg
+      - storemessage
+    permission: sulfuris.store
+    permission-message: You don't have permission to use this command.
