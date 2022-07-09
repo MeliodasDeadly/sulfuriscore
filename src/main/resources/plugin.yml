@@ -17,3 +17,18 @@ commands:
       - storemessage
     permission: sulfuris.store
     permission-message: You don't have permission to use this command.
+  money:
+    description: Give money to a player
+    usage: /givemoney <player> <amount>
+    aliases:
+      - givemoney
+    permission: sulfuris.money
+    permission-message: You don't have permission to use this command.
+  serverinfo:
+    description: Display server information
+    usage: /serverinfo
+    aliases:
+      - serverinfo
+      - server
+    permission: sulfuris.serverinfo
+    permission-message: You don't have permission to use this command.
