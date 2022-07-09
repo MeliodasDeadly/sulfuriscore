@@ -28,7 +28,7 @@ public class GiveCommand implements CommandExecutor {
                             if (args[0].equalsIgnoreCase("give")) {
                                 if (args[1].equalsIgnoreCase("money")) {
                                     player.sendMessage(Utils.chat("&aYou have been given" + args[2] + "&a"));
-                                    player.setBalance(player.getBalance() + Integer.parseInt(args[2]));
+                                    //player.setBalance(player.getBalance() + Integer.parseInt(args[2]));
                                 }
 
                             }
