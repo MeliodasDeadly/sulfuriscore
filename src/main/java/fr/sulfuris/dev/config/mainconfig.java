@@ -5,6 +5,10 @@ import fr.sulfuris.dev.main;
 public class mainconfig {
 
     public static void setConfig(main plugin) {
+        // create config if it doesn't exist
+        if (!plugin.config.contains("main")) {
+            plugin.config.createSection("main");
+        }
         // Server Config
         plugin.config.addDefault("server-name", "SulfurisRP");
         plugin.config.addDefault("server-ip", "localhost");
@@ -28,5 +32,7 @@ public class mainconfig {
         plugin.config.addDefault("error-no-item-in-inventory-hand-hotbar-armor-offhand", "&cYou don't have this item in your inventory, in your hand, in your hotbar, in your armor or in your offhand");
         plugin.config.addDefault("error-no-item-in-inventory-hand-hotbar-armor-offhand-mainhand", "&cYou don't have this item in your inventory, in your hand, in your hotbar, in your armor, in your offhand or in your mainhand");
         plugin.config.addDefault("error-message", "&cAn error has occured");
+
+
     }
 }

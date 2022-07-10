@@ -32,3 +32,10 @@ commands:
       - server
     permission: sulfuris.serverinfo
     permission-message: You don't have permission to use this command.
+  givepack:
+    description: Give a pack to a player
+    usage: /givepack <player> <pack>
+    aliases:
+      - givepack
+    permission: sulfuris.givepack
+    permission-message: You don't have permission to use this command.
