@@ -1,5 +1,6 @@
 package fr.sulfuris.dev.commands.shop;
 
+import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.main;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
@@ -9,7 +10,8 @@ import org.bukkit.entity.Player;
 
 public class PackageCommand implements CommandExecutor {
     private main plugin;
-    public PackageCommand (main plugin) {
+
+    public PackageCommand (final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("givepack").setExecutor((CommandExecutor) this);
     }
@@ -20,7 +22,7 @@ public class PackageCommand implements CommandExecutor {
         Server server = target.getServer();
         Player player = server.getPlayer(args[1]);
 
-        if(args.length > 1){
+        if(args.length >= 1){
             if(args[0].equalsIgnoreCase("givepack")){
                 if(args[1].equalsIgnoreCase(target.getName())){
                     target.sendMessage("Vous avez reçu le pack suivant : " + args[2]);
@@ -29,13 +31,6 @@ public class PackageCommand implements CommandExecutor {
                 }
             }
         }
-
-
-
-
-
-
-
         return true;
     }
 
