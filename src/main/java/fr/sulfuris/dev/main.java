@@ -1,6 +1,7 @@
 package fr.sulfuris.dev;
 
 
+import fr.sulfuris.dev.commands.shop.PackageCommand;
 import fr.sulfuris.dev.config.*;
 import fr.sulfuris.dev.data.*;
 import fr.sulfuris.dev.commands.*;
@@ -52,6 +53,7 @@ public final class main extends JavaPlugin {
         new StoreCommand(this);
         new InfoCommand(this);
         new GiveCommand(this);
+        new PackageCommand(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Meliodas"));
         this.getLogger().log(Level.INFO, Utils.chat("&aPlugin loaded"));

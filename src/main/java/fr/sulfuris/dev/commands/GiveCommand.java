@@ -33,8 +33,7 @@ public class GiveCommand implements CommandExecutor {
                                 target.sendMessage("You have been given " + amount + " $" + " by " + player.getName());
                                 player.sendMessage("You gave " + target.getName() + " " + amount + " $");
                                 //player.setBalance(player.getBalance() + Integer.parseInt(args[1]));
-                            }
-                            if (Utils.isNumeric(args[1])) {
+                            } else if (Utils.isNumeric(args[1])) {
                                 player.sendMessage(Utils.chat("&aYou have been given" + args[1] + "&a"));
                                 //player.setBalance(player.getBalance() + Integer.parseInt(args[1]));
                             }
