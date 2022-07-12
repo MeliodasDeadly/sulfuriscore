@@ -35,6 +35,10 @@ public class KeyCommand implements CommandExecutor {
                     silverkeyitemstack itemstack = new silverkeyitemstack();
                     target.getInventory().addItem(silverkeyitemstack.getItemStack());
                 }
+                if(args[1].equalsIgnoreCase("goldkey")){
+                    goldkeyitemstack itemstack = new goldkeyitemstack();
+                    target.getInventory().addItem(goldkeyitemstack.getItemStack());
+                }
 
             } else if (target == null) {
                 sender.sendMessage("Le joueur " + args[0] + " n'est pas connecté");

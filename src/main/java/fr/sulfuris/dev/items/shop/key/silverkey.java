@@ -8,22 +8,24 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class copperkey implements Listener {
+public class silverkey implements Listener {
 
     public main plugin;
 
-    public copperkey(final main plugin) {
+    public silverkey(final main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
-@EventHandler
+    @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (event.getPlayer().getItemInHand().getType() == Material.TRIPWIRE_HOOK && event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§aCopper Key")) {
+        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK ) {
+            if (event.getPlayer().getItemInHand().getType() == Material.TRIPWIRE_HOOK && event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§aSilver Key")) {
                 event.getPlayer().getItemInHand().setAmount(event.getPlayer().getItemInHand().getAmount() - 1);
             }
 
         }
+
+
     }
 }

@@ -10,7 +10,11 @@ import org.bukkit.util.Vector;
 import java.util.Random;
 
 public class Utils {
+
     public static String chat(final String s) {
+        return s.replace("&", "§");
+    }
+    public static String itemstackname(final String s) {
         return s.replace("&", "§");
     }
 
@@ -25,7 +29,6 @@ public class Utils {
     public static float randFloat(float min, float max) {
         Random rand = new Random();
         return rand.nextFloat() * (max - min) + min;
-
     }
 
     public static String getStringLocation(final Location l) {

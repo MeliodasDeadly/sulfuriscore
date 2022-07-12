@@ -52,9 +52,6 @@ public final class main extends JavaPlugin {
         new GiveCommand(this);
         new PackageCommand(this);
         new KeyCommand(this);
-
-
-
         //new BoosterCommand(this);
         //new LevelCommand(this);
 
