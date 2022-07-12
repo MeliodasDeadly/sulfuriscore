@@ -27,6 +27,10 @@ public class PackageCommand implements CommandExecutor {
                     target.sendMessage("Vous avez reçu le pack suivant : " + args[1]);
                     sender.sendMessage("Le joueur " + target.getName() + " a reçu le pack " + args[1]);
                     server.broadcastMessage("Merci à " + target.getName() + " d'avoir acheté le pack " + args[1] + " !");
+
+
+
+
             } else if (target == null) {
                 sender.sendMessage("Le joueur " + args[0] + " n'est pas connecté");
             }

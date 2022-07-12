@@ -8,6 +8,7 @@ import fr.sulfuris.dev.commands.*;
 import fr.sulfuris.dev.commands.shop.*;
 import fr.sulfuris.dev.items.*;
 import fr.sulfuris.dev.itemstack.*;
+import fr.sulfuris.dev.itemstack.shop.key.*;
 import fr.sulfuris.dev.listener.*;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -50,13 +51,19 @@ public final class main extends JavaPlugin {
         new InfoCommand(this);
         new GiveCommand(this);
         new PackageCommand(this);
+        new KeyCommand(this);
+
+
+
+        //new BoosterCommand(this);
+        //new LevelCommand(this);
+
 
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));
         this.createConfig();
 
         this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Meliodas"));
         this.getLogger().log(Level.INFO, Utils.chat("&aPlugin loaded"));
-
 
 
         // Server Info

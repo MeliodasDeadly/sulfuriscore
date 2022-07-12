@@ -39,3 +39,24 @@ commands:
       - givepack
     permission: sulfuris.givepack
     permission-message: You don't have permission to use this command.
+  givekey:
+    description: Give a key to a player
+    usage: /givekey <player> <key>
+    aliases:
+      - givekey
+    permission: sulfuris.givekey
+    permission-message: You don't have permission to use this command.
+  givebooster:
+    description: Give a booster to a player
+    usage: /givebooster <player> <booster>
+    aliases:
+      - givebooster
+    permission: sulfuris.givebooster
+    permission-message: You don't have permission to use this command.
+  givelevel:
+    description: Give a level to a player
+    usage: /givelevel <player> <level>
+    aliases:
+      - givelevel
+    permission: sulfuris.givelevel
+    permission-message: You don't have permission to use this command.
