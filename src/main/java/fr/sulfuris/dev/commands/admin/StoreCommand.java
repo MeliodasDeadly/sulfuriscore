@@ -1,4 +1,4 @@
-package fr.sulfuris.dev.commands;
+package fr.sulfuris.dev.commands.admin;
 
 import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.data.StoringData;

@@ -1,15 +1,13 @@
 package fr.sulfuris.dev;
 
 
+import fr.sulfuris.dev.commands.admin.InfoCommand;
+import fr.sulfuris.dev.commands.admin.StoreCommand;
 import fr.sulfuris.dev.commands.shop.PackageCommand;
 import fr.sulfuris.dev.config.*;
-import fr.sulfuris.dev.data.*;
-import fr.sulfuris.dev.commands.*;
 import fr.sulfuris.dev.commands.shop.*;
-import fr.sulfuris.dev.items.*;
-import fr.sulfuris.dev.itemstack.*;
-import fr.sulfuris.dev.itemstack.shop.key.*;
 import fr.sulfuris.dev.listener.*;
+import fr.sulfuris.dev.commands.money.*;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -45,15 +43,20 @@ public final class main extends JavaPlugin {
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
         new deathlistener(this);
+        new Joinlistener(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
+
+        // basecommand
         new StoreCommand(this);
         new InfoCommand(this);
-        new GiveCommand(this);
+        // commands shop
         new PackageCommand(this);
         new KeyCommand(this);
-        //new BoosterCommand(this);
-        //new LevelCommand(this);
+
+        // commands money
+        new GiveCommand(this);
+        new SetCommand(this);
 
 
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));

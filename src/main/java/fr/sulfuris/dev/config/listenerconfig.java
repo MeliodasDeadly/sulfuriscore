@@ -10,6 +10,8 @@ public class listenerconfig {
 
         plugin.config.addDefault("deathlistener1", "Et mort de ");
         plugin.config.addDefault("deathlistener2", " avec un ");
+        plugin.config.addDefault("joinlistener1", " Le joueur : ");
+        plugin.config.addDefault("joinlistener2", " vient de rejoindre le serveur !");
 
     }
 

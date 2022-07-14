@@ -1,7 +1,8 @@
-package fr.sulfuris.dev.commands;
+package fr.sulfuris.dev.commands.money;
 
 import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.data.*;
 import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -24,18 +25,20 @@ public class GiveCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
             try{
                 Player player = (Player)sender;
-                Player target = plugin.getServer().getPlayer(args[1]);
-                int amount = Integer.parseInt(args[2]);
+                Player target = plugin.getServer().getPlayer(args[0]);
+                int amount = Integer.parseInt(args[1]);
                     if (args.length > 0){
 
                         if (args[0].equalsIgnoreCase("givemoney")) {
-                            if(args.length >1 && args[1] == target.getName() && Utils.isNumeric(args[2])){
+                            if(args.length >1 && args[0] == target.getName() && Utils.isNumeric(args[1])){
                                 target.sendMessage("You have been given " + amount + " $" + " by " + player.getName());
-                                player.sendMessage("You gave " + target.getName() + " " + amount + " $");
-                                //player.setBalance(player.getBalance() + Integer.parseInt(args[1]));
-                            } else if (Utils.isNumeric(args[1])) {
-                                player.sendMessage(Utils.chat("&aYou have been given" + args[1] + "&a"));
-                                //player.setBalance(player.getBalance() + Integer.parseInt(args[1]));
+                                sender.sendMessage("You gave " + target.getName() + " " + amount + " $");
+                                StoringData.giveMoney(player, Integer.parseInt(args[1]));
+                            } else if (Utils.isNumeric(args[0]) && sender == player) {
+                                player.sendMessage(Utils.chat("&aYou have been given" + args[0] + "&a"));
+                                StoringData.giveMoney(player, Integer.parseInt(args[0]));
+                            } else {
+                                sender.sendMessage(Utils.chat("&aYou need to provide a number"));
                             }
 
                         }
