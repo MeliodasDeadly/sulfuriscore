@@ -12,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.NotNull;
 
 import javax.naming.Name;
 
@@ -41,11 +40,11 @@ public class StoreCommand implements CommandExecutor {
 
                 PersistentDataContainer data = meta.getPersistentDataContainer();
 
-                if (data.has(new NamespacedKey(main.getPlugin(), "message"), PersistentDataType.STRING)) {
+                if (data.has(new NamespacedKey(plugin, "message"), PersistentDataType.STRING)) {
                     player.sendMessage(Utils.chat("&aYour already a message stored in this item"));
-                    player.sendMessage(Utils.chat("Message: " + data.get(new NamespacedKey(main.getPlugin(), "message"), PersistentDataType.STRING)));
+                    player.sendMessage(Utils.chat("Message: " + data.get(new NamespacedKey(plugin, "message"), PersistentDataType.STRING)));
                 }else{
-                    data.set(new NamespacedKey(main.getPlugin(), "message"), PersistentDataType.STRING, message.toString());
+                    data.set(new NamespacedKey(plugin, "message"), PersistentDataType.STRING, message.toString());
 
                     item.setItemMeta(meta);
 

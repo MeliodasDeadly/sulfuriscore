@@ -19,7 +19,7 @@ public class GiveCommand implements CommandExecutor {
     public GiveCommand(final main plugin){
             this.plugin = plugin;
             plugin.getCommand("givemoney").setExecutor((CommandExecutor)this);
-        }
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
