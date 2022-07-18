@@ -37,11 +37,19 @@ public class Utils {
         }
         return String.valueOf(l.getWorld().getName()) + ":" + l.getBlockX() + ":" + l.getBlockY() + ":" + l.getBlockZ();
     }
-    public static void setPlayerData(Plugin plugin, Player player, String key, Object value, PersistentDataType dataType) {
-        if(player.getPersistentDataContainer().has(new NamespacedKey(plugin, key), dataType)){
-            player.getPersistentDataContainer().set(new NamespacedKey(plugin, key), dataType, value);
+    public static void setPlayerString(Plugin plugin, Player player, String key, String value) {
+        if(player.getPersistentDataContainer().has(new NamespacedKey(plugin, key), PersistentDataType.STRING)){
+            player.getPersistentDataContainer().set(new NamespacedKey(plugin, key), PersistentDataType.STRING, value);
         }
     }
+
+    public static String getPlayerString(Plugin plugin, Player player, String key) {
+        if(player.getPersistentDataContainer().has(new NamespacedKey(plugin, key), PersistentDataType.STRING)){
+            return player.getPersistentDataContainer().get(new NamespacedKey(plugin, key), PersistentDataType.STRING);
+        }
+        return null;
+    }
+
 
     public static Location getLocationString(final String s) {
         if (s == null || s.trim() == "") {

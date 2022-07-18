@@ -18,6 +18,7 @@ import fr.sulfuris.dev.commands.money.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 
 
@@ -50,6 +51,17 @@ public final class main extends JavaPlugin {
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
         new deathlistener(this);
         new Joinlistener(this);
+
+        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Database"));
+        new Thread(){
+            public void run(){
+                try {
+                    dbSetup();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
 
