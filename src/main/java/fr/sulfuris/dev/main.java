@@ -53,15 +53,6 @@ public final class main extends JavaPlugin {
         new Joinlistener(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Database"));
-        new Thread(){
-            public void run(){
-                try {
-                    dbSetup();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
 
