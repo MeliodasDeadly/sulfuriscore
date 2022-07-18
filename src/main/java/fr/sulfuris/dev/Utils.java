@@ -50,6 +50,10 @@ public class Utils {
         return null;
     }
 
+    public static Boolean hasPlayerString(Plugin plugin, Player player, String key) {
+        return player.getPersistentDataContainer().has(new NamespacedKey(plugin, key), PersistentDataType.STRING);
+    }
+
 
     public static Location getLocationString(final String s) {
         if (s == null || s.trim() == "") {
