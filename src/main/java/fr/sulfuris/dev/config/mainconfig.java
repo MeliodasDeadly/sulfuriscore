@@ -32,6 +32,10 @@ public class mainconfig {
         plugin.config.addDefault("error-no-item-in-inventory-hand-hotbar-armor-offhand", "&cYou don't have this item in your inventory, in your hand, in your hotbar, in your armor or in your offhand");
         plugin.config.addDefault("error-no-item-in-inventory-hand-hotbar-armor-offhand-mainhand", "&cYou don't have this item in your inventory, in your hand, in your hotbar, in your armor, in your offhand or in your mainhand");
         plugin.config.addDefault("error-message", "&cAn error has occured");
+        // Job config
+        plugin.config.addDefault("job-prefix", "&c&lJob &8&l>&r ");
+        plugin.config.addDefault("job-no-job", "&cYou don't have a job");
+        plugin.config.addDefault("default-job-value", "Chomeur");
 
 
     }

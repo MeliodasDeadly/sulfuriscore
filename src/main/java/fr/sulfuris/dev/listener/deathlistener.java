@@ -3,6 +3,7 @@ package fr.sulfuris.dev.listener;
 import fr.sulfuris.dev.main;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 public class deathlistener implements Listener {
@@ -14,9 +15,10 @@ public class deathlistener implements Listener {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
-    public int isPlayerDead(Player player) {
-        Server server = player.getServer();
-        return server.broadcastMessage(player.getName() + plugin.getConfig().getString("deathlistener1") + player.getPlayer().getKiller().getName() + plugin.getConfig().getString("deathlisterner2") + player.getPlayer().getKiller().getItemInHand().getType() + ".");
+    @EventHandler
+    public int isPlayerDead(org.bukkit.event.entity.PlayerDeathEvent event) {
+        Server server = event.getPlayer().getServer();
+        return server.broadcastMessage(event.getPlayer().getName() + plugin.getConfig().getString("deathlistener1") + event.getPlayer().getKiller().getName() + plugin.getConfig().getString("deathlisterner2") + event.getPlayer().getKiller().getItemInHand().getType() + ".");
     }
 
 }

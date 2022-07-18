@@ -3,6 +3,12 @@ package fr.sulfuris.dev;
 
 import fr.sulfuris.dev.commands.admin.InfoCommand;
 import fr.sulfuris.dev.commands.admin.StoreCommand;
+import fr.sulfuris.dev.commands.admin.job.setjob;
+import fr.sulfuris.dev.commands.admin.money.giveCommand;
+import fr.sulfuris.dev.commands.admin.money.resetCommand;
+import fr.sulfuris.dev.commands.admin.money.setCommand;
+import fr.sulfuris.dev.commands.admin.removeCommand;
+import fr.sulfuris.dev.commands.bank.bankCommand;
 import fr.sulfuris.dev.commands.shop.PackageCommand;
 import fr.sulfuris.dev.config.*;
 import fr.sulfuris.dev.commands.shop.*;
@@ -47,7 +53,7 @@ public final class main extends JavaPlugin {
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
 
-        // basecommand
+        // command base
         new StoreCommand(this);
         new InfoCommand(this);
         // commands shop
@@ -57,6 +63,18 @@ public final class main extends JavaPlugin {
         // commands money
         new GiveCommand(this);
         new SetCommand(this);
+        // commands bank
+        new bankCommand(this);
+        // commands admin
+        new removeCommand(this);
+        // commands adminjob
+        new setjob(this);
+        // command adminmoney
+        new giveCommand(this);
+        new resetCommand(this);
+        new setCommand(this);
+
+
 
 
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));

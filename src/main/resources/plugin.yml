@@ -74,4 +74,47 @@ commands:
       - setmoney
     permission: sulfuris.setmoney
     permission-message: You don't have permission to use this command.
+  adminbank:
+    description: Admin bank
+    usage: /adminbank <player>
+    aliases:
+      - adminbank
+    permission: sulfuris.adminbank
+    permission-message: You don't have permission to use this command.
+  moneygive:
+    description: Give money to a player
+    usage: /moneygive <player> <ammount>
+    aliases:
+      - moneygive
+    permission: sulfuris.moneygive
+    permission-message: You don't have permission to use this command.
+  moneyset:
+    description: Set money to a player
+    usage: /moneyset <player> <ammount>
+    aliases:
+      - moneyset
+    permission: sulfuris.moneyset
+    permission-message: You don't have permission to use this command.
+  moneyreset:
+    description: Reset money to a player
+    usage: /moneyreset <player>
+    aliases:
+      - moneyreset
+    permission: sulfuris.moneyreset
+    permission-message: You don't have permission to use this command.
+  setjob:
+    description: Set job to a player
+    usage: /setjob <player> <job>
+    aliases:
+      - setjob
+    permission: sulfuris.setjob
+    permission-message: You don't have permission to use this command.
+  removedata:
+    description: Remove data from a player
+    usage: /removedata <player>
+    aliases:
+      - removedata
+    permission: sulfuris.removedata
+    permission-message: You don't have permission to use this command.
+
 

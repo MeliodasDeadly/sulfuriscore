@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class moneyitemstack {
     
-    public static ItemStack getItemStack(Player player, int amount) {
+    public static ItemStack getItemStack(Player player) {
         ItemStack moneyitemstack = new ItemStack(Material.DIAMOND);
         ItemMeta moneyitemstackm = moneyitemstack.getItemMeta();
         moneyitemstackm.setDisplayName(StoringData.getMoney(player) + " " + main.getPlugin().getConfig().getString("currency-name"));
