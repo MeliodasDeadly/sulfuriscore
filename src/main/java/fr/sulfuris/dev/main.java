@@ -44,7 +44,6 @@ public final class main extends JavaPlugin {
         }.start();
 
         //listeners
-        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
         //auth
         new loginListener(this);
         this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Méliodas"));

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class database {
 
-    //'azuriom'@'127.0.0.1' IDENTIFIED BY 'LL6MN$kxT*wQ34B4F&en4YwhT';
+    //'azuriom'@'127.0.0.1' IDENTIFIED BY 'LL6MN$kxT*wQ34B4F&en4YwhT';d
 
     public static String sqlHost = "31.32.183.114";
     public static int sqlPort = 3306;
