@@ -60,3 +60,18 @@ commands:
       - givelevel
     permission: sulfuris.givelevel
     permission-message: You don't have permission to use this command.
+  givemoney:
+    description: Give money to a player
+    usage: /givemoney <player> <ammount>
+    aliases:
+      - givemoney
+    permission: sulfuris.givemoney
+    permission-message: You don't have permission to use this command.
+  setmoney:
+    description: Set money to a player
+    usage: /setmoney <player> <ammount>
+    aliases:
+      - setmoney
+    permission: sulfuris.setmoney
+    permission-message: You don't have permission to use this command.
+

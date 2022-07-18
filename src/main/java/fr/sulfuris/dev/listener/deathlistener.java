@@ -4,7 +4,6 @@ import fr.sulfuris.dev.main;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 
 public class deathlistener implements Listener {
 

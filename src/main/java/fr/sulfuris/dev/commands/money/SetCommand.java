@@ -51,9 +51,6 @@ public class SetCommand implements CommandExecutor {
         }catch (NumberFormatException e) {
             sender.sendMessage(this.plugin.getConfig().getString("error-message"));
         }
-        return false;
+        return true;
     }
-
-
-
 }
