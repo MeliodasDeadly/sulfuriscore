@@ -52,7 +52,7 @@ public class atmgui implements Listener {
     }
     @EventHandler
     public void OnClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() != null && event.getCurrentItem().getItemMeta().equals("§7SE CONNECTER")) {
+        if (event.getCurrentItem() != null && event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7SE CONNECTER")) {
             Player playeri = (Player) event.getWhoClicked();
             Plugin plugin = main.getPlugin();
 
