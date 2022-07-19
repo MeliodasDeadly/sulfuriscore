@@ -1,6 +1,5 @@
 package fr.sulfuris.dev.commands.shop;
 
-import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.main;
 import org.bukkit.Server;
 import org.bukkit.command.Command;

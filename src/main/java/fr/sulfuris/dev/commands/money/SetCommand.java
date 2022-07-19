@@ -1,16 +1,13 @@
 package fr.sulfuris.dev.commands.money;
 
-import fr.sulfuris.dev.Utils;
+import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.main;
 import org.apache.commons.lang.NullArgumentException;
-import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
 public class SetCommand implements CommandExecutor {

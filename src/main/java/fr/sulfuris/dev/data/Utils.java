@@ -1,4 +1,4 @@
-package fr.sulfuris.dev;
+package fr.sulfuris.dev.data;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.*;

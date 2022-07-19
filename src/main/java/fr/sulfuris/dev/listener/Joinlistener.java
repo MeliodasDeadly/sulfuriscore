@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.listener;
 
-import fr.sulfuris.dev.Utils;
+import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.main;
 import org.bukkit.NamespacedKey;
@@ -29,7 +29,6 @@ public class Joinlistener implements Listener {
         if(data.get(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER)){
             StoringData.money(player);
             plugin.getLogger().log(Level.INFO, Utils.chat("&aPlayer " + event.getPlayer().getName() + " has been added to the database"));
-
         }
         if(data.get(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER)){
             StoringData.job(player);

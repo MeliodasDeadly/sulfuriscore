@@ -1,7 +1,6 @@
 package fr.sulfuris.dev.commands.admin;
 
-import fr.sulfuris.dev.Utils;
-import fr.sulfuris.dev.data.StoringData;
+import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.main;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
@@ -12,8 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-
-import javax.naming.Name;
 
 public class StoreCommand implements CommandExecutor {
     public main plugin;

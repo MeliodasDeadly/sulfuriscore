@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.admin;
 
-import fr.sulfuris.dev.Utils;
+import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

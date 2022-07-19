@@ -1,14 +1,11 @@
 package fr.sulfuris.dev.listener.auth;
 
-import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.handlers.database.database;
 import fr.sulfuris.dev.main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
-
-import java.util.EventListener;
 
 public class loginListener implements Listener {
     private final main plugin;

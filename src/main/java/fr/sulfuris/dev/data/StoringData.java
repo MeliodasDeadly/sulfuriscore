@@ -1,6 +1,5 @@
 package fr.sulfuris.dev.data;
 
-import fr.sulfuris.dev.Utils;
 import fr.sulfuris.dev.main;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -27,7 +26,6 @@ public class StoringData extends JavaPlugin {
             data.set(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.STRING, valueOf(main.getPlugin().getConfig().getInt("default-job-value")));
         }
     }
-
     public static void setMoney(Player player, int amount) {
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.set(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.STRING, valueOf(amount));
