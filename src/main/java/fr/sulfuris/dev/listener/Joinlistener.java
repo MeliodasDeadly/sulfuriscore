@@ -43,6 +43,8 @@ public class Joinlistener implements Listener {
             StoringData.job(player);
             plugin.getLogger().log(Level.INFO, "&aPlayer " + player.getName() + " &ahas no job, setting to default job");
         }*/
+
+
         if(!loginPlayers.contains(player)){
             DatabaseUser user = DatabaseUser.getFromName(event.getPlayer().getName());
             System.out.println("LOGIN LAST " + user.getLastLoginIp());
