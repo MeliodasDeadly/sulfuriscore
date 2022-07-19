@@ -28,7 +28,7 @@ public class atmgui implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event){
-        if(event.getClickedBlock().getType() == Material.BLACK_CONCRETE) {
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.BLACK_CONCRETE){
             Player player = event.getPlayer();
             Inventory inv = Bukkit.createInventory(null, 27, "§7ATM");
             inv.setItem(13, loginitemstack.getItemStack());
