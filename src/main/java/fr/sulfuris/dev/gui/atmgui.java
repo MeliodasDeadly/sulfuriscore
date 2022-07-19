@@ -1,9 +1,8 @@
 package fr.sulfuris.dev.gui;
-
-import fr.sulfuris.dev.inv.bankinv;
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
 import fr.sulfuris.dev.itemstack.bank.loginitemstack;
+import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,6 +13,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class atmgui implements Listener {
 
@@ -29,18 +31,8 @@ public class atmgui implements Listener {
     }
     @EventHandler
     public void OnClick(InventoryClickEvent event){
-        Inventory inv = event.getInventory();
-        Player player = (Player) event.getWhoClicked();
-        ItemStack current = event.getCurrentItem();
 
-        if(current == null)return;
 
-        if(inv.contains(loginitemstack.getItemStack())){
-
-            if(current.getItemMeta().equals("§7ATM")){
-                player.openInventory(bankinv.getInventory(player));
-            }
-        }
 
 
     }

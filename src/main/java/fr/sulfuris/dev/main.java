@@ -14,12 +14,14 @@ import fr.sulfuris.dev.config.*;
 import fr.sulfuris.dev.commands.shop.*;
 import fr.sulfuris.dev.listener.*;
 import fr.sulfuris.dev.commands.money.*;
-
+import fr.sulfuris.dev.listener.auth.loginListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
+
+import static fr.sulfuris.dev.handlers.database.database.dbSetup;
 
 
 public final class main extends JavaPlugin {
@@ -38,6 +40,8 @@ public final class main extends JavaPlugin {
 
 
 
+
+
     @Override
     public void onEnable() {
         plugin = this;
@@ -49,10 +53,20 @@ public final class main extends JavaPlugin {
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Balance"));
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
+        new loginListener(this);
         new deathlistener(this);
         new Joinlistener(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Database"));
+        new Thread(){
+            public void run(){
+                try {
+                    dbSetup();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
 
@@ -76,6 +90,8 @@ public final class main extends JavaPlugin {
         new giveCommand(this);
         new resetCommand(this);
         new setCommand(this);
+
+
 
 
 

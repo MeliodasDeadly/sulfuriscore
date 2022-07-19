@@ -1,7 +1,5 @@
 package fr.sulfuris.dev.commands.bank;
 
-import fr.sulfuris.dev.Utils;
-import fr.sulfuris.dev.inv.bankinv;
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
 import fr.sulfuris.dev.main;
@@ -30,5 +28,8 @@ public class bankCommand implements CommandExecutor {
         target.openInventory(inv);
         return true;
     }
+
+
+
 
     }
