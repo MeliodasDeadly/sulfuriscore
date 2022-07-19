@@ -45,6 +45,7 @@ public class Joinlistener implements Listener {
         }*/
 
 
+
         if(!loginPlayers.contains(player)){
             DatabaseUser user = DatabaseUser.getFromName(event.getPlayer().getName());
             System.out.println("LOGIN LAST " + user.getLastLoginIp());
