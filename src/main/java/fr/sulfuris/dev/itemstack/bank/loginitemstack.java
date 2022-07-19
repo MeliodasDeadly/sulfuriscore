@@ -14,7 +14,7 @@ public class loginitemstack {
     public static ItemStack getItemStack() {
         ItemStack loginitemstack = new ItemStack(Material.ANVIL);
         ItemMeta loginitemstackm = loginitemstack.getItemMeta();
-        loginitemstackm.setDisplayName("§7Se Connecter");
+        loginitemstackm.setDisplayName("§7SE CONNECTER");
         loginitemstackm.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
         loginitemstackm.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         loginitemstack.setItemMeta(loginitemstackm);
