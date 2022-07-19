@@ -18,6 +18,7 @@ import fr.sulfuris.dev.config.itemconfig;
 import fr.sulfuris.dev.config.listenerconfig;
 import fr.sulfuris.dev.config.mainconfig;
 import fr.sulfuris.dev.data.Utils;
+import fr.sulfuris.dev.gui.atmgui;
 import fr.sulfuris.dev.listener.Joinlistener;
 import fr.sulfuris.dev.listener.deathlistener;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -60,6 +61,7 @@ public final class main extends JavaPlugin {
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
         new deathlistener(this);
         new Joinlistener(this);
+        new atmgui(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Database"));
         new Thread(){
