@@ -26,14 +26,26 @@ import static java.lang.String.valueOf;
 
 public class atmgui implements Listener {
 
+    private final main plugin;
+
+    public atmgui(final main plugin) {
+        this.plugin = plugin;
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
     @EventHandler
     public void onInteract(PlayerInteractEvent event){
-        if(event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.BLACK_CONCRETE){
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR){
             Player player = event.getPlayer();
+            ItemStack item = player.getItemInHand();
             Inventory inv = Bukkit.createInventory(null, 27, "§7ATM");
             inv.setItem(13, loginitemstack.getItemStack());
 
-            player.openInventory(inv);
+            if(item.getType() == Material.GOLD_NUGGET){
+                player.openInventory(inv);
+            }
+
+
         }
 
 
