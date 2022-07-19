@@ -58,9 +58,28 @@ public class StoringData extends JavaPlugin {
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.set(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.STRING, valueOf(job));
     }
+    public static void getpassword (Player player) {
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        if (!data.has(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)) {
+            player.sendMessage("aucun mot de passe");
+        }else {
+            player.sendMessage("mot de passe : " + data.get(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING));
+        }
+    }
+    public static void deletepassword (Player player) {
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        data.remove(new NamespacedKey(main.getPlugin(), "password"));
+    }
+    public static void setpassword (Player player, String password){
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        data.set(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING, valueOf(password));
+    }
+
     public static void removeData( Player player){
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.remove(new NamespacedKey(main.getPlugin(), "job"));
         data.remove(new NamespacedKey(main.getPlugin(), "money"));
+        data.remove(new NamespacedKey(main.getPlugin(), "password"));
     }
+
 }

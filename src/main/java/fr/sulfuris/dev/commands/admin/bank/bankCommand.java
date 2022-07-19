@@ -1,4 +1,4 @@
-package fr.sulfuris.dev.commands.bank;
+package fr.sulfuris.dev.commands.admin.bank;
 
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
@@ -24,6 +24,7 @@ public class bankCommand implements CommandExecutor {
 
         inv.setItem(13, infoitemstack.getItemStack(target));
         inv.setItem(11, jobitemstack.getItemStack(target));
+
 
         target.openInventory(inv);
         return true;

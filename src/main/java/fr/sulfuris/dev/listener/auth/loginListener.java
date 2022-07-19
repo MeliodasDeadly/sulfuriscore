@@ -19,6 +19,6 @@ public class loginListener implements Listener {
     public void onLogin(PlayerLoginEvent event) {
         Player player = event.getPlayer();
         String ip = String.valueOf(player.getAddress());
-        System.out.println(database.getUserFromDatabase(player.getName()).toString());
+        System.out.println(database.getUserFromName(player.getName()).toString());
     }
 }

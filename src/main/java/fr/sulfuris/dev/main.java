@@ -8,7 +8,7 @@ import fr.sulfuris.dev.commands.admin.money.giveCommand;
 import fr.sulfuris.dev.commands.admin.money.resetCommand;
 import fr.sulfuris.dev.commands.admin.money.setCommand;
 import fr.sulfuris.dev.commands.admin.removeCommand;
-import fr.sulfuris.dev.commands.bank.bankCommand;
+import fr.sulfuris.dev.commands.admin.bank.bankCommand;
 import fr.sulfuris.dev.commands.shop.PackageCommand;
 import fr.sulfuris.dev.config.*;
 import fr.sulfuris.dev.commands.shop.*;
