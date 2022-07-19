@@ -2,6 +2,7 @@ package fr.sulfuris.dev.commands.admin.job;
 
 import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.data.StoringData;
+import fr.sulfuris.dev.data.DatabaseUser;
 import fr.sulfuris.dev.main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -27,7 +28,7 @@ public class setjob implements CommandExecutor {
         StoringData.setJob(target, valueOf(args[1]));
         target.sendMessage(Utils.chat("&aYour job has been set to " + args[1]));
         sender.sendMessage(Utils.chat("&aYou have set " + target.getName() + "'s job to " + args[1]));
-
+        DatabaseUser user = DatabaseUser.getFromName(target.getName());
         return true;
     }
 

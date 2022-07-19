@@ -8,21 +8,25 @@ import fr.sulfuris.dev.commands.admin.money.giveCommand;
 import fr.sulfuris.dev.commands.admin.money.resetCommand;
 import fr.sulfuris.dev.commands.admin.money.setCommand;
 import fr.sulfuris.dev.commands.admin.removeCommand;
-import fr.sulfuris.dev.commands.admin.bank.bankCommand;
+import fr.sulfuris.dev.commands.bank.bankCommand;
+import fr.sulfuris.dev.commands.money.GiveCommand;
+import fr.sulfuris.dev.commands.money.SetCommand;
+import fr.sulfuris.dev.commands.shop.KeyCommand;
 import fr.sulfuris.dev.commands.shop.PackageCommand;
-import fr.sulfuris.dev.config.*;
-import fr.sulfuris.dev.commands.shop.*;
+import fr.sulfuris.dev.config.currencyconfig;
+import fr.sulfuris.dev.config.itemconfig;
+import fr.sulfuris.dev.config.listenerconfig;
+import fr.sulfuris.dev.config.mainconfig;
 import fr.sulfuris.dev.data.Utils;
-import fr.sulfuris.dev.listener.*;
-import fr.sulfuris.dev.commands.money.*;
-import fr.sulfuris.dev.listener.auth.loginListener;
+import fr.sulfuris.dev.listener.Joinlistener;
+import fr.sulfuris.dev.listener.deathlistener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
 
-import static fr.sulfuris.dev.handlers.database.database.dbSetup;
+import static fr.sulfuris.dev.data.DatabaseUser.dbSetup;
 
 
 public final class main extends JavaPlugin {
@@ -54,7 +58,6 @@ public final class main extends JavaPlugin {
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Balance"));
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Listeners"));
-        new loginListener(this);
         new deathlistener(this);
         new Joinlistener(this);
 
@@ -91,6 +94,7 @@ public final class main extends JavaPlugin {
         new giveCommand(this);
         new resetCommand(this);
         new setCommand(this);
+        new Joinlistener(this);
 
 
 

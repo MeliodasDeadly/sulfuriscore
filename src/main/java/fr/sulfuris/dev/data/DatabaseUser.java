@@ -1,23 +1,45 @@
-package fr.sulfuris.dev.definers;
+package fr.sulfuris.dev.data;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.google.common.collect.ImmutableMap;
+import com.ptsmods.mysqlw.Database;
 import com.ptsmods.mysqlw.query.QueryCondition;
 import com.ptsmods.mysqlw.query.SelectResults;
-import fr.sulfuris.dev.handlers.database.database;
-import fr.sulfuris.dev.handlers.logger.logger;
 
-import static fr.sulfuris.dev.handlers.database.database.db;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 
-public class databaseUser {
+public class DatabaseUser {
     private static String usersTable = "users";
     private static String[] userDrfiner = new String[]{"id", "name", "email", "email_verified_at", "password", "role_id", "money", "game_id", "avatar", "access_token", "two_factor_secret", "two_factor_recovery_codes", "last_login_ip", "last_login_at", "is_banned", "remember_token", "created_at", "updated_at", "deleted_at"};
-    
-    public static databaseUser getFromName(String user){
+
+    public static String sqlHost = "31.32.183.114";
+    public static int sqlPort = 3306;
+    public static String sqlName = "azuriom";
+    public static String sqlUsername = "azuriom";
+    public static String sqlPassword = "LL6MN$kxT*wQ34B4F&en4YwhT";
+    public static Database db;
+
+    public static void dbSetup() throws SQLException {
+        try {
+            System.out.println("Connecting to database...");
+            Database.loadConnector(Database.RDBMS.MySQL, "8.0.23", new File("mysql-connector-java.jar"), true);
+            db = Database.connect(sqlHost, sqlPort, sqlName, sqlUsername, sqlPassword);
+            System.out.println("Connected to database.");
+        } catch (IOException e) {
+            System.err.println(e);
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            System.err.println(e);
+            throw new RuntimeException(e);
+        }
+    }
+    public static DatabaseUser getFromName(String user){
         SelectResults results = db.select(usersTable, "*", QueryCondition.equals("name", user));
         if(results.iterator().hasNext()){
             SelectResults.SelectResultRow row = results.iterator().next();
-            return new databaseUser(
+            return new DatabaseUser(
                     String.valueOf(row.get("id")),
                     String.valueOf(row.get("name")),
                     String.valueOf(row.get("email")),
@@ -43,7 +65,7 @@ public class databaseUser {
     
     public static void registerUser(int id, String name, String email, String password, int roleId, long money, String gameId, String avatar, String accessToken, String twoFactorSecret, String twoFactorRecoveryCodes, String lastLoginIp, String lastLoginAt, int isBanned, String rememberToken, String createdAt, String updatedAt, String deletedAt) {
         db.insert(usersTable, userDrfiner, new String[]{String.valueOf(id), name, email, "NULL", BCrypt.withDefaults().hashToString(12, password.toCharArray()), String.valueOf(1), String.valueOf(money), gameId, avatar, accessToken, twoFactorSecret, twoFactorRecoveryCodes, lastLoginIp, lastLoginAt, String.valueOf(isBanned), rememberToken, createdAt, updatedAt, deletedAt});
-        logger.log("Added azuriom " + name + " to database.");
+        System.out.println("Added azuriom " + name + " to database.");
     }
     
     public static Boolean doesUserexist(String name) {
@@ -73,7 +95,7 @@ public class databaseUser {
     private String updatedAt;
     private String deletedAt;
 
-    public databaseUser(String id, String name, String email, String email_verified_at, String password, String roleId, String money, String gameId, String avatar, String accessToken, String twoFactorSecret, String twoFactorRecoveryCodes, String lastLoginIp, String lastLoginAt, String isBanned, String rememberToken, String createdAt, String updatedAt, String deletedAt) {
+    public DatabaseUser(String id, String name, String email, String email_verified_at, String password, String roleId, String money, String gameId, String avatar, String accessToken, String twoFactorSecret, String twoFactorRecoveryCodes, String lastLoginIp, String lastLoginAt, String isBanned, String rememberToken, String createdAt, String updatedAt, String deletedAt) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -201,7 +223,7 @@ public class databaseUser {
     }
     public void setLastLoginIp(String lastLoginIp) {
         this.lastLoginIp = lastLoginIp;
-        updateUser(this.name, "lastLoginIp", lastLoginIp);
+        updateUser(this.name, "last_login_ip", lastLoginIp);
     }
     public String getLastLoginAt() {
         return lastLoginAt;
