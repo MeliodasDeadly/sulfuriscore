@@ -1,8 +1,8 @@
 package fr.sulfuris.dev.commands.money;
 
-import fr.sulfuris.dev.data.Utils;
+import fr.sulfuris.dev.Main;
 import fr.sulfuris.dev.data.StoringData;
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.data.Utils;
 import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,17 +10,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SetCommand implements CommandExecutor {
-    private main plugin;
-    public SetCommand(main plugin) {
+    private Main plugin;
+
+    public SetCommand(Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("setmoney").setExecutor(this);
     }
 
     @Override
-    public boolean onCommand( CommandSender sender,  Command cmd,  String msg,  String[] args) {
-        try{
-            if(args[0].equalsIgnoreCase("setmoney")){
-                Player player = (Player)sender;
+    public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
+        try {
+            if (args[0].equalsIgnoreCase("setmoney")) {
+                Player player = (Player) sender;
                 Player target = plugin.getServer().getPlayer(args[0]);
                 int amount = Integer.parseInt(args[1]);
                 if(args.length >= 2 && args[0] == target.getName() && Utils.isNumeric(args[1])){

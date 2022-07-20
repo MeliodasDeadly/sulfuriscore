@@ -1,11 +1,15 @@
 name: Sulfuris
 version: '${project.version}'
-main: fr.sulfuris.dev.main
+main: fr.sulfuris.dev.Main
 api-version: 1.16
-description: SulfurisPL
-author: SulfurisDev
+description: Sulfuris plugin made for minecraft roleplay
+author: D3adPlaysVR, Meliodouil
 url: www.sulfuris.fr
+softdepend: [ WorldGuard ]
 commands:
+  svehicles:
+    usage: /svehicles
+    description: main command for sulfuris vehicles
   store:
     description: Store a message in a item
     usage: /store <message>
@@ -115,6 +119,13 @@ commands:
     aliases:
       - removedata
     permission: sulfuris.removedata
+    permission-message: You don't have permission to use this command.
+  sit:
+    description: Sit down
+    usage: /sit
+    aliases:
+      - sit
+    permission: sulfuris.sit
     permission-message: You don't have permission to use this command.
 
 

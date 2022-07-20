@@ -1,9 +1,9 @@
 package fr.sulfuris.dev.config;
 
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 
 public class jobconfig {
-    public static void setConfig(main plugin) {
+    public static void setConfig(Main plugin) {
         if (!plugin.config.contains("job")) {
             plugin.config.createSection("job");
         }

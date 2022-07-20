@@ -1,9 +1,9 @@
 package fr.sulfuris.dev.gui;
-import fr.sulfuris.dev.data.StoringData;
+
+import fr.sulfuris.dev.Main;
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
 import fr.sulfuris.dev.itemstack.bank.loginitemstack;
-import fr.sulfuris.dev.main;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -20,15 +20,13 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static java.lang.String.valueOf;
 
 public class atmgui implements Listener {
 
-    private final main plugin;
+    private final Main plugin;
 
-    public atmgui(final main plugin) {
+    public atmgui(final Main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -54,10 +52,11 @@ public class atmgui implements Listener {
     public void OnClick(InventoryClickEvent event) {
         if (event.getCurrentItem() != null && event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7SE CONNECTER")) {
             Player playeri = (Player) event.getWhoClicked();
-            Plugin plugin = main.getPlugin();
+            Plugin plugin = Main.getPlugin();
+            event.setCancelled(true);
 
             PersistentDataContainer data = playeri.getPersistentDataContainer();
-            if(!data.has(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)) {
+            if (!data.has(new NamespacedKey(Main.getPlugin(), "password"), PersistentDataType.STRING)) {
                 Inventory inv = Bukkit.createInventory(null, 27, "§7ATM");
                 inv.setItem(13, infoitemstack.getItemStack(playeri));
                 inv.setItem(12, jobitemstack.getItemStack(playeri));
@@ -98,7 +97,7 @@ public class atmgui implements Listener {
                             player.sendMessage("You closed the ATM.");
                         })
                         .onComplete((player, text) -> {                                    //called when the inventory output slot is clicked
-                            if(text.equalsIgnoreCase(valueOf(data.get(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)))) {
+                            if (text.equalsIgnoreCase(valueOf(data.get(new NamespacedKey(Main.getPlugin(), "password"), PersistentDataType.STRING)))) {
                                 player.openInventory(inv);
                                 event.setCancelled(true);
                                 return AnvilGUI.Response.close();

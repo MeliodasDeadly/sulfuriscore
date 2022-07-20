@@ -1,8 +1,8 @@
 package fr.sulfuris.dev.commands.admin.bank;
 
+import fr.sulfuris.dev.Main;
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
-import fr.sulfuris.dev.main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,11 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 public class bankCommand implements CommandExecutor {
-    private main plugin;
-    public bankCommand(final main plugin) {
+    private Main plugin;
+
+    public bankCommand(final Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("adminbank").setExecutor((CommandExecutor) this);
     }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
         Player target = Bukkit.getPlayer(args[0]);

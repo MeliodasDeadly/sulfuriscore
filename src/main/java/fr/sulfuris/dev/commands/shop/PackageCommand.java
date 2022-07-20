@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.shop;
 
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,9 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class PackageCommand implements CommandExecutor {
-    private main plugin;
+    private Main plugin;
 
-    public PackageCommand (final main plugin) {
+    public PackageCommand(final Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("givepack").setExecutor((CommandExecutor) this);
     }

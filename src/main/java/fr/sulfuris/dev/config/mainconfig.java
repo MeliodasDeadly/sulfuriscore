@@ -1,13 +1,13 @@
 package fr.sulfuris.dev.config;
 
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 
 public class mainconfig {
 
-    public static void setConfig(main plugin) {
+    public static void setConfig(Main plugin) {
         // create config if it doesn't exist
-        if (!plugin.config.contains("main")) {
-            plugin.config.createSection("main");
+        if (!plugin.config.contains("Main")) {
+            plugin.config.createSection("Main");
         }
         // Server Config
         plugin.config.addDefault("server-name", "SulfurisRP");

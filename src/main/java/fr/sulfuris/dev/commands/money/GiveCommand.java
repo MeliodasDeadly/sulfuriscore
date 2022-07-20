@@ -1,8 +1,8 @@
 package fr.sulfuris.dev.commands.money;
 
+import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
-import fr.sulfuris.dev.main;
-import fr.sulfuris.dev.data.*;
 import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,11 +12,11 @@ import org.bukkit.entity.Player;
 
 public class GiveCommand implements CommandExecutor {
 
-    private main plugin;
+    private Main plugin;
 
-    public GiveCommand(final main plugin){
-            this.plugin = plugin;
-            plugin.getCommand("givemoney").setExecutor((CommandExecutor)this);
+    public GiveCommand(final Main plugin) {
+        this.plugin = plugin;
+        plugin.getCommand("givemoney").setExecutor((CommandExecutor) this);
     }
 
     @Override

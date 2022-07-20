@@ -1,17 +1,19 @@
 package fr.sulfuris.dev.commands.shop;
 
-import fr.sulfuris.dev.itemstack.shop.key.*;
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.itemstack.shop.key.copperkeyitemstack;
+import fr.sulfuris.dev.itemstack.shop.key.goldkeyitemstack;
+import fr.sulfuris.dev.itemstack.shop.key.silverkeyitemstack;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import fr.sulfuris.dev.itemstack.shop.*;
-public class KeyCommand implements CommandExecutor {
-    private main plugin;
 
-    public KeyCommand(final main plugin) {
+public class KeyCommand implements CommandExecutor {
+    private Main plugin;
+
+    public KeyCommand(final Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("givekey").setExecutor((CommandExecutor) this);
     }
