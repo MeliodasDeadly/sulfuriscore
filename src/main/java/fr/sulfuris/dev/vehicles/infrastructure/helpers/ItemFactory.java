@@ -19,9 +19,6 @@ import java.util.Map;
 
 import static fr.sulfuris.dev.vehicles.infrastructure.modules.VersionModule.getServerVersion;
 
-/**
- * Class for an easy creation of items
- */
 public class ItemFactory {
     private ItemStack item;
     private @Nullable String skullOwner;

@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * <b>/vehicle refill</b> - refill the held vehicle.
- */
 public class VehicleRefill extends SulfuVehicleSubCommand {
     public VehicleRefill() {
         this.setPlayerCommand(true);
@@ -17,7 +14,7 @@ public class VehicleRefill extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.refill")) return true;
+        if (!checkPermission("svehicles.refill")) return true;
 
         final ItemStack item = player.getInventory().getItemInMainHand();
 

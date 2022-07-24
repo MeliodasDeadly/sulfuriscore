@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import org.bukkit.Location;
 
-/**
- * On vehicle place
- */
 public class VehiclePlaceEvent extends SulfuVEvent implements IsCancellable, HasVehicle {
     private Location location;
     private String licensePlate;
@@ -34,20 +31,10 @@ public class VehiclePlaceEvent extends SulfuVEvent implements IsCancellable, Has
         return VehicleUtils.getVehicle(licensePlate);
     }
 
-    /**
-     * Get the location where vehicle is being placed
-     *
-     * @return Placement location
-     */
-    public Location getLocation() {
-        return location;
-    }
+        public Location getLocation() {
+            return location;
+        }
 
-    /**
-     * Set a new location where the vehicle will be placed
-     *
-     * @param location New placement location
-     */
     public void setLocation(Location location) {
         this.location = location;
     }

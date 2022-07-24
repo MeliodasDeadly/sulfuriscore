@@ -20,9 +20,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
-/**
- * On right click with a voucher
- */
 public class VehicleVoucherListener extends SulfuVListener {
     public static HashMap<Player, String> voucher = new HashMap<>();
 
@@ -39,9 +36,9 @@ public class VehicleVoucherListener extends SulfuVListener {
 
         if (item == null || item.getType() != Material.PAPER) return;
         NBTItem nbt = new NBTItem(item);
-        if (!nbt.hasKey("mtvehicles.item")) return;
+        if (!nbt.hasKey("svehicles.item")) return;
 
-        String carUUID = nbt.getString("mtvehicles.item");
+        String carUUID = nbt.getString("svehicles.item");
 
         VehicleVoucherEvent api = (VehicleVoucherEvent) getAPI();
         api.setVoucherUUID(carUUID);

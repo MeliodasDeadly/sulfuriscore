@@ -13,9 +13,6 @@ import java.text.NumberFormat;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-/**
- * <b>/vehicle info</b> - get information about the held vehicle
- */
 public class VehicleInfo extends SulfuVehicleSubCommand {
     public VehicleInfo() {
         this.setPlayerCommand(true);
@@ -34,7 +31,7 @@ public class VehicleInfo extends SulfuVehicleSubCommand {
         sendMessage(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_INFO_TYPE) + vehicle.getVehicleType().getName());
         sendMessage(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_INFO_NAME) + vehicle.getName());
         sendMessage(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_INFO_LICENSE) + licensePlate);
-        if (player.hasPermission("mtvehicles.admin")) {
+        if (player.hasPermission("svehicles.admin")) {
             sendMessage(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_INFO_UUID) + VehicleUtils.getCarUUID(licensePlate));
         }
         sendMessage(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_INFO_SPEED) + formatter.format(vehicle.getMaxSpeed() * 20).toString().replace(",", ".") + " blocks/sec");

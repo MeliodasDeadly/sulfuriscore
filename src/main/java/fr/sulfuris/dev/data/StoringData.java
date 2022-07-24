@@ -12,7 +12,6 @@ import static java.lang.String.valueOf;
 public class StoringData extends JavaPlugin {
 
 
-    // const amount == get amount from command
 
     public static void money(Player player) {
         PersistentDataContainer data = player.getPersistentDataContainer();

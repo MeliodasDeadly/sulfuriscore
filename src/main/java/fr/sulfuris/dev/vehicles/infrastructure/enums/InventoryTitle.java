@@ -5,9 +5,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.modules.ConfigModule;
 import java.util.Locale;
 import java.util.Objects;
 
-/**
- * Title of a GUI menu
- */
 public enum InventoryTitle {
     VEHICLE_MENU,
     CHOOSE_VEHICLE_MENU,
@@ -24,24 +21,13 @@ public enum InventoryTitle {
     VOUCHER_REDEEM_MENU,
     VEHICLE_TRUNK;
 
-    /**
-     * Get this enum from the string title displayed on top of an inventory
-     *
-     * @param stringTitle Displayed title
-     * @return InventoryTitle enum
-     */
-    public static InventoryTitle getByStringTitle(String stringTitle) {
-        for (InventoryTitle title : InventoryTitle.values()) {
-            if (Objects.equals(stringTitle, title.getStringTitle())) return title;
+        public static InventoryTitle getByStringTitle(String stringTitle) {
+            for (InventoryTitle title : InventoryTitle.values()) {
+                if (Objects.equals(stringTitle, title.getStringTitle())) return title;
+            }
+            return null;
         }
-        return null;
-    }
 
-    /**
-     * Get the title which is displayed on top of an inventory
-     *
-     * @return Displayed title
-     */
     public String getStringTitle() {
         return ConfigModule.messagesConfig.getMessage(Message.valueOf(this.toString().toUpperCase(Locale.ROOT)));
     }

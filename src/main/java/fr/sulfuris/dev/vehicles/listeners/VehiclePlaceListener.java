@@ -17,9 +17,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * On place of a vehicle
- */
 public class VehiclePlaceListener extends SulfuVListener {
 
     public VehiclePlaceListener() {
@@ -38,7 +35,7 @@ public class VehiclePlaceListener extends SulfuVListener {
         if (!action.equals(Action.RIGHT_CLICK_BLOCK)) return;
         if (item == null) return;
         if (!item.hasItemMeta()
-                || !(new NBTItem(item)).hasKey("mtvehicles.kenteken")
+                || !(new NBTItem(item)).hasKey("svehicles.kenteken")
                 || clickedBlock == null
         ) return;
         String license = VehicleUtils.getLicensePlate(item);

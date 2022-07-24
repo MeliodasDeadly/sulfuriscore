@@ -5,9 +5,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.helpers.Metrics;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Module configuring bStats metrics system
- */
 public class MetricsModule {
     private static @Getter
     @Setter

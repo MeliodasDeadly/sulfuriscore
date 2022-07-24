@@ -7,11 +7,6 @@ import org.bukkit.entity.ArmorStand;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Maps containing vehicles' data
- *
- * @warning <b>This class may be moved in v2.5.0. Bear it in mind if you're using it in your addon.</b>
- */
 @ToDo("make nicer, move, refactor - for better API usage")
 public class VehicleData {
     public static HashMap<String, Double> speed = new HashMap<>();
@@ -33,8 +28,7 @@ public class VehicleData {
     public static HashMap<String, ArmorStand> autostand = new HashMap<>();
     public static HashMap<String, ArmorStand> autostand2 = new HashMap<>();
     public static Map<String, Long> lastUsage = new HashMap<>();
-    public static HashMap<String, Boolean> fallDamage = new HashMap<>(); //Used for helicopters when 'extremely falling'
-
+    public static HashMap<String, Boolean> fallDamage = new HashMap<>();
     public static HashMap<String, Integer> RotationSpeed = new HashMap<>();
     public static HashMap<String, Double> MaxSpeed = new HashMap<>();
     public static HashMap<String, Double> AccelerationSpeed = new HashMap<>();

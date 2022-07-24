@@ -2,9 +2,6 @@ package fr.sulfuris.dev.vehicles.infrastructure.enums;
 
 import java.util.Locale;
 
-/**
- * Configurable messages in MTV
- */
 public enum Message {
     HELP_INFO,
     HELP_HELP,
@@ -184,12 +181,7 @@ public enum Message {
         this.key = key;
     }
 
-    /**
-     * Get string key of message
-     *
-     * @return Message key
-     */
-    public String getKey() {
-        return key;
-    }
+        public String getKey() {
+            return key;
+        }
 }

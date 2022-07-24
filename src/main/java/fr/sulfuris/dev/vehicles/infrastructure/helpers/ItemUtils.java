@@ -18,21 +18,9 @@ import java.util.*;
 
 import static fr.sulfuris.dev.vehicles.infrastructure.modules.VersionModule.getServerVersion;
 
-/**
- * Methods for creating items in plugin's menus
- */
 public class ItemUtils {
-    /**
-     * HashMap containing information of what is being edited by players
-     */
-    public static HashMap<String, Boolean> edit = new HashMap<>();
+        public static HashMap<String, Boolean> edit = new HashMap<>();
 
-    /**
-     * Get material from string (e.g. 'DIAMOND_HOE'). Accepts legacy names.
-     *
-     * @param string Material as a String
-     * @return Material
-     */
     public static Material getMaterial(String string) {
         try {
             Material material = Material.getMaterial(string);
@@ -56,9 +44,6 @@ public class ItemUtils {
         }
     }
 
-    /**
-     * Get item used in vehicle menu. Updated method (used to be #carItem(...)).
-     */
     public static ItemStack getMenuVehicle(@NotNull Material material, int durability, String name) {
         if (!material.isItem()) return null;
         ItemStack vehicle = (new ItemFactory(material))
@@ -70,26 +55,20 @@ public class ItemUtils {
         return vehicle;
     }
 
-    /**
-     * Create a new vehicle item (used in "Choose vehicle menu" and #getCarItem(...)). Updated method (used to be #carItem2(...)).
-     */
     public static ItemStack getVehicleItem(@NotNull Material material, int durability, String name) {
         if (!material.isItem()) return null;
         String licensePlate = generateLicencePlate();
         ItemStack vehicle = (new ItemFactory(material))
                 .setDurability(durability)
                 .setName(TextUtils.colorize("&6" + name))
-                .setNBT("mtvehicles.kenteken", licensePlate)
-                .setNBT("mtvehicles.naam", name)
+                .setNBT("svehicles.kenteken", licensePlate)
+                .setNBT("svehicles.naam", name)
                 .setLore("&a", "&a" + licensePlate, "&a")
                 .setUnbreakable(true)
                 .toItemStack();
         return vehicle;
     }
 
-    /**
-     * Create a new vehicle item <b>with a custom NBT</b> (used in "Choose vehicle menu" and #getCarItem(...)). Updated method (used to be #carItem3(...)).
-     */
     public static ItemStack getVehicleItem(@NotNull Material material, int durability, String name, String nbtKey, @Nullable Object nbtValue) {
         if (!material.isItem()) return null;
         if (nbtValue == null) {
@@ -99,8 +78,8 @@ public class ItemUtils {
         ItemStack vehicle = (new ItemFactory(material))
                 .setDurability(durability)
                 .setName(TextUtils.colorize("&6" + name))
-                .setNBT("mtvehicles.kenteken", licensePlate)
-                .setNBT("mtvehicles.naam", name)
+                .setNBT("svehicles.kenteken", licensePlate)
+                .setNBT("svehicles.naam", name)
                 .setNBT(nbtKey, nbtValue.toString())
                 .setLore("&a", "&a" + licensePlate, "&a")
                 .setUnbreakable(true)
@@ -108,26 +87,20 @@ public class ItemUtils {
         return vehicle;
     }
 
-    /**
-     * Restore a vehicle item with a known license plate (used in /vehicle restore and #spawnVehicle(...)). Updated method (used to be #carItem5(...)).
-     */
     public static ItemStack getVehicleItem(@NotNull Material material, int durability, boolean glowing, String name, String licensePlate) {
         if (!material.isItem()) return null;
         ItemStack vehicle = (new ItemFactory(material))
                 .setDurability(durability)
                 .setName(TextUtils.colorize("&6" + name))
                 .setGlowing(glowing)
-                .setNBT("mtvehicles.kenteken", licensePlate)
-                .setNBT("mtvehicles.naam", name)
+                .setNBT("svehicles.kenteken", licensePlate)
+                .setNBT("svehicles.naam", name)
                 .setLore("&a", "&a" + licensePlate, "&a")
                 .setUnbreakable(true)
                 .toItemStack();
         return vehicle;
     }
 
-    /**
-     * Restore a vehicle item with a known license plate and <b>a custom NBT</b> (used in /vehicle restore). Updated method (used to be #carItem4(...)).
-     */
     public static ItemStack getVehicleItem(@NotNull Material material, int durability, boolean glowing, String name, String licensePlate, String nbtKey, @Nullable Object nbtValue) {
         if (!material.isItem()) return null;
         if (nbtValue == null) {
@@ -137,8 +110,8 @@ public class ItemUtils {
                 .setDurability(durability)
                 .setName(TextUtils.colorize("&6" + name))
                 .setGlowing(glowing)
-                .setNBT("mtvehicles.kenteken", licensePlate)
-                .setNBT("mtvehicles.naam", name)
+                .setNBT("svehicles.kenteken", licensePlate)
+                .setNBT("svehicles.naam", name)
                 .setNBT(nbtKey, nbtValue.toString())
                 .setLore("&a", "&a" + licensePlate, "&a")
                 .setUnbreakable(true)
@@ -151,12 +124,6 @@ public class ItemUtils {
         return plate.toUpperCase();
     }
 
-    /**
-     * Get a menu item by material, amount, name and lore (as List).
-     * <b>Used for items whose Material name has been changed between versions.</b>
-     * <p>
-     * An updated method (used to be #woolItem(...)).
-     */
     public static ItemStack getMenuItem(String materialName, String materialLegacyName, short legacyData, int amount, String name, List<String> lores) {
         ItemStack item;
         try {
@@ -181,9 +148,6 @@ public class ItemUtils {
         return getMenuItem(materialName, materialLegacyName, legacyData, amount, name, Arrays.asList(lores));
     }
 
-    /**
-     * Get a menu item by material, amount, name and lore (as List)
-     */
     public static ItemStack getMenuItem(@NotNull Material material, int amount, String name, List<String> lores) {
         ItemStack item = (new ItemFactory(material, amount))
                 .setName(name)
@@ -192,17 +156,10 @@ public class ItemUtils {
         return item;
     }
 
-    /**
-     * Get a menu item by material, amount, name and lore (as multiple Strings)
-     */
     public static ItemStack getMenuItem(@NotNull Material material, int amount, String name, String... lores) {
         return getMenuItem(material, amount, name, Arrays.asList(lores));
     }
 
-    /**
-     * Get a glowing menu item by material, amount, name and lore (as List).
-     * (Used to be #glowItem(). Updated.)
-     */
     public static ItemStack getMenuGlowingItem(@NotNull Material material, int amount, String name, List<String> lores) {
         ItemStack item = (new ItemFactory(material, amount))
                 .setName(name)
@@ -212,17 +169,10 @@ public class ItemUtils {
         return item;
     }
 
-    /**
-     * Get a glowing menu item by material, amount, name and lore (as multiple Strings).
-     * (Used to be #glowItem(). Updated.)
-     */
     public static ItemStack getMenuGlowingItem(@NotNull Material material, int amount, String name, String... lores) {
         return getMenuGlowingItem(material, amount, name, Arrays.asList(lores));
     }
 
-    /**
-     * Get a menu item by material, amount, durability, unbreakability (boolean), name and lore (as List)
-     */
     public static ItemStack getMenuItem(@NotNull Material material, int amount, int durability, boolean unbreakable, String name, List<String> lores) {
         ItemStack item = (new ItemFactory(material, amount))
                 .setName(name)
@@ -233,26 +183,14 @@ public class ItemUtils {
         return item;
     }
 
-    /**
-     * Get a menu item by material, amount, durability, unbreakability (boolean), name and lore (as multiple Strings)
-     */
     public static ItemStack getMenuItem(@NotNull Material material, int amount, int durability, String name, List<String> lores) {
         return getMenuItem(material, amount, durability, false, name, lores);
     }
 
-    /**
-     * Get a menu item by material, amount, durability, name and lore (as multiple Strings). (Unbreakable is set to false.)
-     */
     public static ItemStack getMenuItem(@NotNull Material material, int amount, int durability, String name, String... lores) {
         return getMenuItem(material, amount, durability, false, name, Arrays.asList(lores));
     }
 
-    /**
-     * <b>Do not use this. Use getMenuItem() instead.</b>
-     *
-     * @param lores Lore as String - you can use %nl% for a new line
-     * @deprecated Use {@link #getMenuItem(Material, int, int, String, String...)} instead.
-     */
     @Deprecated
     public static ItemStack mItem(String material, int amount, short durability, String text, String lores) {
         List<String> itemLore = Arrays.asList(TextUtils.colorize(lores).split("%nl%"));
@@ -264,19 +202,12 @@ public class ItemUtils {
         return getMenuItem(m, amount, durability, false, text, itemLore);
     }
 
-    /**
-     * Get the stained glass pane material
-     */
     @VersionSpecific
     public static Material getStainedGlassPane() {
         if (getServerVersion().is1_12()) return Material.getMaterial("STAINED_GLASS_PANE");
         else return Material.getMaterial("LEGACY_STAINED_GLASS_PANE");
     }
 
-    /**
-     * Get menu item about riders/drivers.
-     * An updated method (used to be #mItemRiders(...)).
-     */
     public static ItemStack getMenuRidersItem(String licensePlate) {
         List<String> lore = new ArrayList<>();
         MessagesConfig msg = ConfigModule.messagesConfig;
@@ -301,10 +232,6 @@ public class ItemUtils {
         return getMenuItem(Material.PAPER, 1, "&6" + msg.getMessage(Message.RIDERS), lore);
     }
 
-    /**
-     * Get menu item about members/passengers.
-     * An updated method (used to be #mItemMembers(...)).
-     */
     public static ItemStack getMenuMembersItem(String licensePlate) {
         List<String> lore = new ArrayList<>();
         MessagesConfig msg = ConfigModule.messagesConfig;
@@ -329,10 +256,6 @@ public class ItemUtils {
         return getMenuItem(Material.PAPER, 1, "&6" + msg.getMessage(Message.MEMBERS), lore);
     }
 
-    /**
-     * Get a custom menu item which has a custom texture (e.g. vehicle or a jerry can). Get lore from a List of Strings.
-     * An updated method (used to be #mItem2(...)).
-     */
     public static ItemStack getMenuCustomItem(@NotNull Material material, String name, int durability, List<String> lore) {
         if (!material.isItem()) return null;
         ItemStack vehicle = (new ItemFactory(material))
@@ -344,18 +267,10 @@ public class ItemUtils {
         return vehicle;
     }
 
-    /**
-     * Get a custom menu item which has a custom texture (e.g. vehicle or a jerry can). Get lore from multiple Strings.
-     * An updated method (used to be #mItem2(...)).
-     */
     public static ItemStack getMenuCustomItem(@NotNull Material material, String name, int durability, String... lore) {
         return getMenuCustomItem(material, name, durability, Arrays.asList(lore));
     }
 
-    /**
-     * Get a custom menu item which has a custom texture (e.g. vehicle or a jerry can) <b>with a custom NBT</b>. Get lore from a List of Strings.
-     * An updated method (used to be #mItem3(...)).
-     */
     public static ItemStack getMenuCustomItem(@NotNull Material material, String nbtKey, @Nullable Object nbtValue, String name, int durability, List<String> lore) {
         if (!material.isItem()) return null;
         if (nbtValue == null) {
@@ -371,19 +286,10 @@ public class ItemUtils {
         return vehicle;
     }
 
-    /**
-     * Get a custom menu item which has a custom texture (e.g. vehicle or a jerry can) <b>with a custom NBT</b>. Get lore from multiple Strings.
-     * An updated method (used to be #mItem3(...)).
-     */
     public static ItemStack getMenuCustomItem(@NotNull Material material, String nbtKey, @Nullable Object nbtValue, String name, int durability, String... lore) {
         return getMenuCustomItem(material, nbtKey, nbtValue, name, durability, Arrays.asList(lore));
     }
 
-    /**
-     * Create a new voucher. An updated method.
-     *
-     * @param carUUID UUID of the car (to be found in vehicles.yml)
-     */
     public static ItemStack createVoucher(String carUUID) {
         MessagesConfig msg = ConfigModule.messagesConfig;
         ItemStack voucher = (new ItemFactory(Material.PAPER))
@@ -396,7 +302,7 @@ public class ItemUtils {
                         TextUtils.colorize("&2> Permanent"),
                         TextUtils.colorize("&8&m                                    ")
                 )
-                .setNBT("mtvehicles.item", carUUID)
+                .setNBT("svehicles.item", carUUID)
                 .toItemStack();
         return voucher;
     }

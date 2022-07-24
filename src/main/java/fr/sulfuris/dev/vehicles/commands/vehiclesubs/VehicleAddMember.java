@@ -9,9 +9,6 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-/**
- * <b>/vehicle addmember %player%</b> - add a player who may sit in the vehicle the player is sitting in (if they are its owner) OR player's held vehicle.
- */
 public class VehicleAddMember extends SulfuVehicleSubCommand {
     public VehicleAddMember() {
         this.setPlayerCommand(true);

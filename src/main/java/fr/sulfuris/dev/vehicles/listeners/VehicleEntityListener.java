@@ -22,9 +22,6 @@ import org.bukkit.inventory.ItemStack;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 
-/**
- * On vehicle left click - damaging, opening a trunk, fueling
- */
 public class VehicleEntityListener extends SulfuVListener {
 
     public static HashMap<String, Double> speed = new HashMap<>();
@@ -66,7 +63,7 @@ public class VehicleEntityListener extends SulfuVListener {
 
         ItemStack item = player.getInventory().getItemInMainHand();
 
-        if (!item.hasItemMeta() || !new NBTItem(item).hasKey("mtvehicles.benzineval")) {
+        if (!item.hasItemMeta() || !new NBTItem(item).hasKey("svehicles.benzineval")) {
             setupDamageAPI(damager, license);
             callAPI();
             if (isCancelled()) return;
@@ -78,8 +75,8 @@ public class VehicleEntityListener extends SulfuVListener {
         NBTItem nbt = new NBTItem(item);
 
         final double vehicleFuel = VehicleData.fuel.get(license);
-        final String jerryCanFuel = nbt.getString("mtvehicles.benzineval");
-        final String jerryCanSize = nbt.getString("mtvehicles.benzinesize");
+        final String jerryCanFuel = nbt.getString("svehicles.benzineval");
+        final String jerryCanSize = nbt.getString("svehicles.benzinesize");
 
         this.setAPI(new VehicleFuelEvent(vehicleFuel, Integer.parseInt(jerryCanFuel), Integer.parseInt(jerryCanSize)));
         VehicleFuelEvent api = (VehicleFuelEvent) getAPI();
@@ -125,22 +122,11 @@ public class VehicleEntityListener extends SulfuVListener {
         }
     }
 
-    /**
-     * Damage a vehicle.
-     *
-     * @param license The vehicle's license plate
-     * @deprecated Renamed to {@link #damage(String)}.
-     */
     @Deprecated
     public void checkDamage(String license) {
         damage(license);
     }
 
-    /**
-     * Damage a vehicle.
-     *
-     * @param license The vehicle's license plate
-     */
     public void damage(String license) {
         final double damage = ((VehicleDamageEvent) getAPI()).getDamage();
 
@@ -149,7 +135,7 @@ public class VehicleEntityListener extends SulfuVListener {
 
         double damageMultiplier = (double) ConfigModule.defaultConfig.get(DefaultConfig.Option.DAMAGE_MULTIPLIER);
         if (damageMultiplier < 0.1 || damageMultiplier > 5)
-            damageMultiplier = 0.5; //Must be between 0.1 and 5. Default: 0.5
+            damageMultiplier = 0.5;
         ConfigModule.vehicleDataConfig.damageVehicle(license, damage * damageMultiplier);
     }
 

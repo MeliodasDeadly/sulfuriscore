@@ -5,9 +5,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 
-/**
- * <b>/vehicle trunk</b> - open the trunk of the vehicle the player is sitting in (if they are its owner) OR player's held vehicle.
- */
 public class VehicleTrunk extends SulfuVehicleSubCommand {
     public VehicleTrunk() {
         this.setPlayerCommand(true);

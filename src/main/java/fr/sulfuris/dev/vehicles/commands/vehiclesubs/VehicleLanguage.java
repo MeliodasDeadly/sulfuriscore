@@ -4,9 +4,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
 import fr.sulfuris.dev.vehicles.infrastructure.helpers.LanguageUtils;
 import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
 
-/**
- * <b>/vehicle language</b> - set the plugin's language (in a GUI).
- */
 public class VehicleLanguage extends SulfuVehicleSubCommand {
     public VehicleLanguage() {
         this.setPlayerCommand(true);
@@ -14,7 +11,7 @@ public class VehicleLanguage extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (sender.hasPermission("mtvehicles.language") || sender.hasPermission("mtvehicles.admin"))
+        if (sender.hasPermission("svehicles.language") || sender.hasPermission("svehicles.admin"))
             LanguageUtils.openLanguageGUI(player);
         else sendMessage(Message.NO_PERMISSION);
 

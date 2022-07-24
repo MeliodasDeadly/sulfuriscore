@@ -17,23 +17,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <b>/vehicle fuel</b> - open a GUI with different jerrycans.
- */
 public class VehicleFuel extends SulfuVehicleSubCommand {
     public VehicleFuel() {
         this.setPlayerCommand(true);
     }
 
-    /**
-     * Get a jerrycan item
-     *
-     * @param maxFuel     Size of the jerrycan
-     * @param currentFuel Current amount of fuel (should not be higher than maxFuel)
-     * @return Jerrycan
-     */
     public static ItemStack jerrycanItem(int maxFuel, int currentFuel) {
-        ItemStack is = new ItemFactory(Material.getMaterial("DIAMOND_HOE")).setAmount(1).setDurability((short) 58).setNBT("mtvehicles.benzineval", "" + currentFuel).setNBT("mtvehicles.benzinesize", "" + maxFuel).toItemStack();
+        ItemStack is = new ItemFactory(Material.getMaterial("DIAMOND_HOE")).setAmount(1).setDurability((short) 58).setNBT("svehicles.benzineval", "" + currentFuel).setNBT("svehicles.benzinesize", "" + maxFuel).toItemStack();
         ItemMeta im = is.getItemMeta();
         List<String> itemlore = new ArrayList<>();
         itemlore.add(TextUtils.colorize("&8"));
@@ -48,7 +38,7 @@ public class VehicleFuel extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.benzine")) return true;
+        if (!checkPermission("svehicles.benzine")) return true;
 
         Inventory inv = Bukkit.createInventory(null, 9, InventoryTitle.JERRYCAN_MENU.getStringTitle());
 

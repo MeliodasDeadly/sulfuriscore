@@ -9,9 +9,6 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-/**
- * <b>/vehicle addrider %player%</b> - add a player who may steer the vehicle the player is sitting in (if they are its owner) OR player's held vehicle.
- */
 public class VehicleAddRider extends SulfuVehicleSubCommand {
     public VehicleAddRider() {
         this.setPlayerCommand(true);

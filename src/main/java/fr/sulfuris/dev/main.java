@@ -20,6 +20,7 @@ import fr.sulfuris.dev.config.listenerconfig;
 import fr.sulfuris.dev.config.mainconfig;
 import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.gui.atmgui;
+import fr.sulfuris.dev.listener.DismountEvent;
 import fr.sulfuris.dev.listener.Joinlistener;
 import fr.sulfuris.dev.listener.deathlistener;
 import fr.sulfuris.dev.vehicles.infrastructure.modules.*;
@@ -83,23 +84,14 @@ public final class main extends JavaPlugin {
         plugin.getLogger().info(text);
     }
 
-    /**
-     * Log a warning to the console (yellow)
-     */
     public static void logWarning(String text) {
         plugin.getLogger().warning(text);
     }
 
-    /**
-     * Log a message warning about a severe issue to the console (red)
-     */
     public static void logSevere(String text) {
         plugin.getLogger().severe(text);
     }
 
-    /**
-     * Run a task using a bukkit scheduler
-     */
     public static void schedulerRun(Runnable task) {
         Bukkit.getScheduler().runTask(plugin, task);
     }
@@ -133,29 +125,23 @@ public final class main extends JavaPlugin {
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Commands"));
 
-        // command base
         new StoreCommand(this);
         new InfoCommand(this);
-        // commands shop
         new PackageCommand(this);
         new KeyCommand(this);
 
-        // commands money
         new GiveCommand(this);
         new SetCommand(this);
-        // commands bank
         new bankCommand(this);
-        // commands admin
         new removeCommand(this);
-        // commands adminjob
         new setjob(this);
-        // command adminmoney
         new giveCommand(this);
         new resetCommand(this);
         new setCommand(this);
         new Joinlistener(this);
         new atmgui(this);
         new SitCommand(this);
+        new DismountEvent(this);
 
         new CommandModule();
         new ListenersModule();
@@ -171,7 +157,6 @@ public final class main extends JavaPlugin {
         this.getLogger().log(Level.INFO, Utils.chat("&aPlugin loaded"));
 
 
-        // Server Info
         this.getLogger().log(Level.INFO, Utils.chat("----------------------------------------------"));
         this.getLogger().log(Level.INFO, Utils.chat("&aThere are &c&l" + this.getServer().getOnlinePlayers().size() + "&a players online"));
         this.getLogger().log(Level.INFO, Utils.chat("&aThere are &c&l" + this.getServer().getPluginManager().getPlugins().length + "&a plugins loaded"));

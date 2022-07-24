@@ -15,31 +15,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * <b>/vehicle edit</b> - edit held vehicle's specifications (in a GUI).
- */
 public class VehicleEdit extends SulfuVehicleSubCommand {
     public VehicleEdit() {
         this.setPlayerCommand(true);
     }
 
-    /**
-     * Open /vehicle edit GUI menu to a player
-     *
-     * @param p    Player
-     * @param item Vehicle item
-     */
-    public static void editMenu(Player p, ItemStack item) {
-        String licensePlate = VehicleUtils.getLicensePlate(item);
-        MessagesConfig msg = ConfigModule.messagesConfig;
-        Inventory inv = Bukkit.createInventory(null, 27, InventoryTitle.VEHICLE_EDIT_MENU.getStringTitle());
-        inv.setItem(10, ItemUtils.getMenuCustomItem(
-                ItemUtils.getMaterial(ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.SKIN_ITEM).toString()),
-                "mtcustom",
-                ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.NBT_VALUE),
-                msg.getMessage(Message.VEHICLE_SETTINGS),
-                ConfigModule.vehicleDataConfig.getDamage(licensePlate),
-                ""
+        public static void editMenu(Player p, ItemStack item) {
+            String licensePlate = VehicleUtils.getLicensePlate(item);
+            MessagesConfig msg = ConfigModule.messagesConfig;
+            Inventory inv = Bukkit.createInventory(null, 27, InventoryTitle.VEHICLE_EDIT_MENU.getStringTitle());
+            inv.setItem(10, ItemUtils.getMenuCustomItem(
+                    ItemUtils.getMaterial(ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.SKIN_ITEM).toString()),
+                    "mtcustom",
+                    ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.NBT_VALUE),
+                    msg.getMessage(Message.VEHICLE_SETTINGS),
+                    ConfigModule.vehicleDataConfig.getDamage(licensePlate),
+                    ""
         ));
         inv.setItem(11, ItemUtils.getMenuCustomItem(Material.DIAMOND_HOE, msg.getMessage(Message.FUEL_SETTINGS), 58, ""));
         inv.setItem(12, ItemUtils.getMenuItem(Material.CHEST, 1, msg.getMessage(Message.TRUNK_SETTINGS), ""));
@@ -51,7 +42,7 @@ public class VehicleEdit extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.edit")) return true;
+        if (!checkPermission("svehicles.edit")) return true;
 
         final ItemStack item = player.getInventory().getItemInMainHand();
 

@@ -11,16 +11,8 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
-/**
- * Vehicle with its specifications
- *
- * @warning <b>This class may be moved in v2.5.0. Bear it in mind if you're using it in your addon.</b>
- */
 public class Vehicle {
-    /**
-     * @deprecated There is no use for this HashMap. Please, avoid using it in any way as it may get removed soon.
-     */
-    @Deprecated
+        @Deprecated
     public static HashMap<String, SulfuVehicleSubCommand> subcommands = new HashMap<>();
     private String licensePlate;
     private String name;
@@ -49,9 +41,6 @@ public class Vehicle {
     private List<String> members;
     private Map<?, ?> vehicleData;
 
-    /**
-     * Save the vehicle specifications (and possible adjustments) to vehicleData.yml
-     */
     public void save() {
         Map<String, Object> map = new HashMap<>();
         map.put(VehicleDataConfig.Option.NAME.getPath(), this.getName());
@@ -82,11 +71,6 @@ public class Vehicle {
         ConfigModule.vehicleDataConfig.save();
     }
 
-    /**
-     * Delete a vehicle from the database (vehicleData.yml)
-     *
-     * @throws IllegalStateException If vehicle is already deleted.
-     */
     public void delete() throws IllegalStateException {
         ConfigModule.vehicleDataConfig.delete(this.getLicensePlate());
     }
@@ -227,9 +211,6 @@ public class Vehicle {
         this.maxSpeedBackwards = maxSpeedBackwards;
     }
 
-    /**
-     * @deprecated Use {@link #getOwnerUUID()} instead.
-     */
     @Deprecated
     public String getOwnerUUIDString() {
         return owner.toString();
@@ -295,9 +276,6 @@ public class Vehicle {
         this.kofferbakData = trunkData;
     }
 
-    /**
-     * @deprecated Use {@link #setOwner(UUID)} instead.
-     */
     @Deprecated
     public void setOwner(String ownerUUID) {
         try {
@@ -331,9 +309,6 @@ public class Vehicle {
         return vehicleType;
     }
 
-    /**
-     * @deprecated Use {@link #setVehicleType(VehicleType)} instead.
-     */
     @Deprecated
     @ToDo("Remove usages")
     public void setVehicleType(String vehicleType) {

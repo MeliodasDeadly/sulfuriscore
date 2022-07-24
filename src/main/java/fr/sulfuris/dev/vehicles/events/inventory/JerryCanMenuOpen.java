@@ -6,19 +6,11 @@ import fr.sulfuris.dev.vehicles.infrastructure.enums.InventoryTitle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVEvent;
 import org.bukkit.entity.Player;
 
-/**
- * On /vehicle fuel open
- */
 public class JerryCanMenuOpen extends SulfuVEvent implements IsCancellable, HasInventory {
 
-    /**
-     * Default constructor with a player (calls {@link SulfuVEvent#setPlayer(Player)}).
-     *
-     * @param player Player
-     */
-    public JerryCanMenuOpen(Player player) {
-        setPlayer(player);
-    }
+        public JerryCanMenuOpen(Player player) {
+            setPlayer(player);
+        }
 
     @Override
     public void setCancelled(boolean cancelled) {

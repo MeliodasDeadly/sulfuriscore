@@ -9,9 +9,6 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-/**
- * <b>/vehicle removemember %player%</b> - remove a player who may sit in the vehicle the player is sitting in (if they are its owner) OR player's held vehicle.
- */
 public class VehicleRemoveMember extends SulfuVehicleSubCommand {
     public VehicleRemoveMember() {
         this.setPlayerCommand(true);

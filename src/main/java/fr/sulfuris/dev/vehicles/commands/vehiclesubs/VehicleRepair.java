@@ -6,9 +6,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import fr.sulfuris.dev.vehicles.infrastructure.modules.ConfigModule;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * <b>/vehicle repair</b> - repair the held vehicle.
- */
 public class VehicleRepair extends SulfuVehicleSubCommand {
     public VehicleRepair() {
         this.setPlayerCommand(true);
@@ -16,7 +13,7 @@ public class VehicleRepair extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.repair")) return true;
+        if (!checkPermission("svehicles.repair")) return true;
 
         final ItemStack item = player.getInventory().getItemInMainHand();
 

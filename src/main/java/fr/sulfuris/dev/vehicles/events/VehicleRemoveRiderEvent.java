@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import org.bukkit.entity.Player;
 
-/**
- * On vehicle remove rider (/vehicle removerider command). Riders are players who may steer the vehicle.
- */
 public class VehicleRemoveRiderEvent extends SulfuVEvent implements IsCancellable, HasVehicle {
     private String licensePlate;
     private Player removedPlayer;
@@ -34,25 +31,14 @@ public class VehicleRemoveRiderEvent extends SulfuVEvent implements IsCancellabl
         return VehicleUtils.getVehicle(licensePlate);
     }
 
-    /**
-     * Get the player who used /vehicle removerider command
-     *
-     * @see #getPlayer()
-     */
-    public Player getRemover() {
-        return super.getPlayer();
-    }
+        public Player getRemover() {
+            return super.getPlayer();
+        }
 
-    /**
-     * Get the player who is being removed as a rider
-     */
     public Player getRemoved() {
         return removedPlayer;
     }
 
-    /**
-     * Set the player who is being removed as a rider
-     */
     public void setRemoved(Player player) {
         this.removedPlayer = player;
     }

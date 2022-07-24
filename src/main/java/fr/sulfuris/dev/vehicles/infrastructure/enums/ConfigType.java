@@ -1,8 +1,5 @@
 package fr.sulfuris.dev.vehicles.infrastructure.enums;
 
-/**
- * Type of configuration file
- */
 public enum ConfigType {
     DEFAULT("config.yml"),
     VEHICLES("vehicles.yml"),
@@ -19,20 +16,10 @@ public enum ConfigType {
         this.fileName = fileName;
     }
 
-    /**
-     * Whether the config type is a type of messages
-     *
-     * @return Whether the config type is a type of messages
-     */
-    public boolean isMessages() {
-        return this.equals(MESSAGES);
-    }
+        public boolean isMessages() {
+            return this.equals(MESSAGES);
+        }
 
-    /**
-     * Get config's file name
-     *
-     * @return Name / Path of config
-     */
     public String getFileName() {
         return this.fileName;
     }
