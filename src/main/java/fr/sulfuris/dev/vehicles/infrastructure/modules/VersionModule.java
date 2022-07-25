@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.modules;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.PluginVersion;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ServerVersion;
@@ -40,10 +40,10 @@ public class VersionModule {
      * The server's minecraft version (e.g. '1_16_R3')
      */
     private static String serverVersion;
-    private Logger logger = Main.instance.getLogger();
+    private Logger logger = main.instance.getLogger();
 
     public VersionModule() {
-        PluginDescriptionFile pdf = Main.instance.getDescription();
+        PluginDescriptionFile pdf = main.instance.getDescription();
         pluginVersionString = pdf.getVersion();
         pluginVersion = PluginVersion.getPluginVersion();
 
@@ -77,7 +77,7 @@ public class VersionModule {
             logger.severe("Your Server version is not supported. The plugin will NOT load.");
             logger.severe("Check the supported versions here: https://wiki.mtvehicles.eu/faq.html");
             logger.severe("--------------------------");
-            Main.disablePlugin();
+            main.disablePlugin();
             return false;
         } else if (!Bukkit.getVersion().contains("1.12.2") && !Bukkit.getVersion().contains("1.13.2") && !Bukkit.getVersion().contains("1.15.2") && !Bukkit.getVersion().contains("1.16.5") && !Bukkit.getVersion().contains("1.17.1") && !Bukkit.getVersion().contains("1.18.2") && !Bukkit.getVersion().contains("1.19")) {
             logger.warning("--------------------------");

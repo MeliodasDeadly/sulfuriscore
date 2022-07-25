@@ -1,9 +1,9 @@
 package fr.sulfuris.dev.config;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 
 public class itemconfig {
-    public static void setConfig(Main plugin) {
+    public static void setConfig(main plugin) {
         if (!plugin.config.contains("items")) {
             plugin.config.createSection("items");
         }

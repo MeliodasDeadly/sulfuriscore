@@ -1,7 +1,7 @@
 package fr.sulfuris.dev.vehicles.listeners.inventory;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.commands.vehiclesubs.VehicleEdit;
 import fr.sulfuris.dev.vehicles.commands.vehiclesubs.VehicleMenu;
 import fr.sulfuris.dev.vehicles.events.inventory.InventoryClickEvent;
@@ -462,7 +462,7 @@ public class InventoryClickListener extends SulfuVListener {
                     break;
                 } catch (Exception e) {
                     limit = 0;
-                    Main.logSevere("An error occurred whilst trying to retrieve player's 'mtvehicles.limit.X' permission. You must have done something wrong when setting it.");
+                    main.logSevere("An error occurred whilst trying to retrieve player's 'mtvehicles.limit.X' permission. You must have done something wrong when setting it.");
                     break;
                 }
             }

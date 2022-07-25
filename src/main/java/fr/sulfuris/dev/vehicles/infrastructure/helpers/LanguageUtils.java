@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.helpers;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.InventoryTitle;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Language;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
@@ -57,7 +57,7 @@ public class LanguageUtils {
             ConfigModule.secretSettings.save();
         } else {
             p.sendMessage(ChatColor.RED + "An error occurred whilst trying to set a new language.");
-            Main.instance.getLogger().severe(String.format("Could not find file messages/messages_%s.yml, aborting...", languageCode));
+            main.instance.getLogger().severe(String.format("Could not find file messages/messages_%s.yml, aborting...", languageCode));
         }
     }
 }

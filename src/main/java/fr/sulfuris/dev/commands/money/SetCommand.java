@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.money;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
 import org.apache.commons.lang.NullArgumentException;
@@ -10,9 +10,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SetCommand implements CommandExecutor {
-    private Main plugin;
+    private main plugin;
 
-    public SetCommand(Main plugin) {
+    public SetCommand(main plugin) {
         this.plugin = plugin;
         plugin.getCommand("setmoney").setExecutor(this);
     }

@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.admin.money;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
 import org.bukkit.Bukkit;
@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 
 public class resetCommand implements CommandExecutor {
 
-    public Main plugin;
+    public main plugin;
 
-    public resetCommand(final Main plugin) {
+    public resetCommand(final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("moneyreset").setExecutor((CommandExecutor) this);
     }

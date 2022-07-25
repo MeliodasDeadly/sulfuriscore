@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.admin.job;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.DatabaseUser;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
@@ -14,9 +14,9 @@ import static java.lang.Integer.valueOf;
 
 public class setjob implements CommandExecutor {
 
-    public Main plugin;
+    public main plugin;
 
-    public setjob(final Main plugin) {
+    public setjob(final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("setjob").setExecutor((CommandExecutor) this);
     }

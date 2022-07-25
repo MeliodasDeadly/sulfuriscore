@@ -1,8 +1,8 @@
 package fr.sulfuris.dev.config;
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 
 public class listenerconfig {
-    public static void setConfig(Main plugin) {
+    public static void setConfig(main plugin) {
         // create config if it doesn't exist
         if (!plugin.config.contains("listeners")) {
             plugin.config.createSection("listeners");

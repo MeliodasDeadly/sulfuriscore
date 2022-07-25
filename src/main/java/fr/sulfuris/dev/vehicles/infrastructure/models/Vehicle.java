@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.models;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.ToDo;
 import fr.sulfuris.dev.vehicles.infrastructure.dataconfig.VehicleDataConfig;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.VehicleType;
@@ -303,7 +303,7 @@ public class Vehicle {
         try {
             this.owner = UUID.fromString(ownerUUID);
         } catch (IllegalArgumentException e) {
-            Main.logSevere("An error occurred while setting a vehicle's owner. This may lead to further issues...");
+            main.logSevere("An error occurred while setting a vehicle's owner. This may lead to further issues...");
         }
     }
 
@@ -340,7 +340,7 @@ public class Vehicle {
         try {
             this.vehicleType = VehicleType.valueOf(vehicleType.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
-            Main.logSevere("An error occurred while setting a vehicle's type. Using default (CAR)...");
+            main.logSevere("An error occurred while setting a vehicle's type. Using default (CAR)...");
             this.vehicleType = VehicleType.CAR;
         }
     }

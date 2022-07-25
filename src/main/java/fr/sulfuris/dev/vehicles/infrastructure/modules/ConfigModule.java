@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.modules;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.dataconfig.*;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Config;
 import lombok.Getter;
@@ -48,24 +48,24 @@ public class ConfigModule {
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy-HH_mm_ss");
         Date date = new Date();
 
-        String configVersion = Main.configVersion;
-        String messagesVersion = Main.messagesVersion;
+        String configVersion = main.configVersion;
+        String messagesVersion = main.messagesVersion;
 
         final boolean oldConfigVersion = !secretSettings.getConfigVersion().equals(configVersion) || defaultConfig.hasOldVersionChecking();
         final boolean oldMessagesVersion = !secretSettings.getMessagesVersion().equals(messagesVersion) || defaultConfig.hasOldVersionChecking();
 
         if (oldConfigVersion) {
-            File dc = new File(Main.instance.getDataFolder(), "config.yml");
-            File vc = new File(Main.instance.getDataFolder(), "vehicles.yml");
-            File sss = new File(Main.instance.getDataFolder(), "supersecretsettings.yml");
-            dc.renameTo(new File(Main.instance.getDataFolder(), "configOld_" + formatter.format(date) + ".yml"));
-            vc.renameTo(new File(Main.instance.getDataFolder(), "vehiclesOld_" + formatter.format(date) + ".yml"));
+            File dc = new File(main.instance.getDataFolder(), "config.yml");
+            File vc = new File(main.instance.getDataFolder(), "vehicles.yml");
+            File sss = new File(main.instance.getDataFolder(), "supersecretsettings.yml");
+            dc.renameTo(new File(main.instance.getDataFolder(), "configOld_" + formatter.format(date) + ".yml"));
+            vc.renameTo(new File(main.instance.getDataFolder(), "vehiclesOld_" + formatter.format(date) + ".yml"));
             sss.delete();
-            Main.instance.saveDefaultConfig();
+            main.instance.saveDefaultConfig();
         }
 
         if (oldMessagesVersion) {
-            File sss = new File(Main.instance.getDataFolder(), "supersecretsettings.yml");
+            File sss = new File(main.instance.getDataFolder(), "supersecretsettings.yml");
             sss.delete();
             messagesConfig.saveNewLanguageFiles(formatter.format(date));
         }
@@ -84,8 +84,8 @@ public class ConfigModule {
     public static void reloadConfigs() {
         configList.forEach(Config::reload);
         if (!messagesConfig.setLanguageFile(secretSettings.getMessagesLanguage())) {
-            Main.instance.getLogger().severe("Messages.yml for your desired language could not be found. Disabling the plugin...");
-            Main.disablePlugin();
+            main.instance.getLogger().severe("Messages.yml for your desired language could not be found. Disabling the plugin...");
+            main.disablePlugin();
         }
     }
 }

@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.dataconfig;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ConfigType;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Language;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Config;
@@ -23,7 +23,7 @@ public class SecretSettingsConfig extends Config {
     /**
      * Get config version.
      *
-     * @see Main#configVersion
+     * @see main#configVersion
      */
     public String getConfigVersion() {
         return this.getConfiguration().getString("configVersion");
@@ -32,7 +32,7 @@ public class SecretSettingsConfig extends Config {
     /**
      * Get message files version.
      *
-     * @see Main#messagesVersion
+     * @see main#messagesVersion
      */
     public String getMessagesVersion() {
         return this.getConfiguration().getString("messagesVersion");

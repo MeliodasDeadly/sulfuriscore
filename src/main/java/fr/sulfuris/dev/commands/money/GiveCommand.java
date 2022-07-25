@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.money;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
 import org.apache.commons.lang.NullArgumentException;
@@ -12,9 +12,9 @@ import org.bukkit.entity.Player;
 
 public class GiveCommand implements CommandExecutor {
 
-    private Main plugin;
+    private main plugin;
 
-    public GiveCommand(final Main plugin) {
+    public GiveCommand(final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("givemoney").setExecutor((CommandExecutor) this);
     }

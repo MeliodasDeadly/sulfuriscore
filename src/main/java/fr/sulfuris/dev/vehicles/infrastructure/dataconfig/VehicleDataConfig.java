@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.dataconfig;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ConfigType;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.VehicleType;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Config;
@@ -138,7 +138,7 @@ public class VehicleDataConfig extends Config {
         try {
             return VehicleType.valueOf(get(licensePlate, Option.VEHICLE_TYPE).toString().toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
-            Main.logSevere("An error occurred while setting a vehicle's type. Using default (CAR)...");
+            main.logSevere("An error occurred while setting a vehicle's type. Using default (CAR)...");
             return VehicleType.CAR;
         }
     }

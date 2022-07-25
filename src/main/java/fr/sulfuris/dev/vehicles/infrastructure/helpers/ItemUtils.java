@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.helpers;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
 import fr.sulfuris.dev.vehicles.infrastructure.dataconfig.MessagesConfig;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
@@ -49,7 +49,7 @@ public class ItemUtils {
                     assert material != null;
                     return material;
                 } catch (Exception e3) {
-                    Main.logSevere("An error occurred while trying to obtain material from string '" + string + "'. This is most likely a plugin issue, contact us at discord.gg/vehicle!");
+                    main.logSevere("An error occurred while trying to obtain material from string '" + string + "'. This is most likely a plugin issue, contact us at discord.gg/vehicle!");
                     return null;
                 }
             }
@@ -166,7 +166,7 @@ public class ItemUtils {
                 item = new ItemStack(getMaterial(materialLegacyName), amount);
                 item.setDurability(legacyData);
             } catch (Exception e2) {
-                Main.logSevere("An error occurred - could not get item neither from " + materialName + " nor from " + materialLegacyName + ". This is most likely a plugin issue, contact us at discord.gg/vehicle!");
+                main.logSevere("An error occurred - could not get item neither from " + materialName + " nor from " + materialLegacyName + ". This is most likely a plugin issue, contact us at discord.gg/vehicle!");
                 return null;
             }
         }
@@ -258,7 +258,7 @@ public class ItemUtils {
         List<String> itemLore = Arrays.asList(TextUtils.colorize(lores).split("%nl%"));
         Material m = getMaterial(material);
         if (m == null) {
-            Main.logSevere("An error occurred. Cannot obtain material from string '" + material + "'. This is most likely a plugin issue, contact us at discord.gg/vehicle!");
+            main.logSevere("An error occurred. Cannot obtain material from string '" + material + "'. This is most likely a plugin issue, contact us at discord.gg/vehicle!");
             return null;
         }
         return getMenuItem(m, amount, durability, false, text, itemLore);

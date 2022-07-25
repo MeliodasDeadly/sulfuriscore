@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.items.shop.key;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,9 +9,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class silverkey implements Listener {
 
-    public Main plugin;
+    public main plugin;
 
-    public silverkey(final Main plugin) {
+    public silverkey(final main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

@@ -1,7 +1,7 @@
 package fr.sulfuris.dev.vehicles.listeners;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.events.ChatEvent;
 import fr.sulfuris.dev.vehicles.infrastructure.dataconfig.VehicleDataConfig;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
@@ -16,7 +16,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import static fr.sulfuris.dev.Main.schedulerRun;
+import static fr.sulfuris.dev.main.schedulerRun;
 
 
 /**
@@ -262,7 +262,7 @@ public class ChatListener extends SulfuVListener {
                 ItemUtils.edit.put(player.getUniqueId() + ".kofferbakRows", false);
 
                 if (event.isAsynchronous())
-                    Bukkit.getScheduler().runTask(Main.getPlugin(), () -> MenuUtils.trunkEdit(player));
+                    Bukkit.getScheduler().runTask(main.getPlugin(), () -> MenuUtils.trunkEdit(player));
             }
 
             if (!isInt(message)) {

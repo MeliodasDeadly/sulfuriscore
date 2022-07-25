@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.movement;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -58,7 +58,7 @@ public class PacketHandler {
         final String errorMessage = "An unexpected error occurred. Try reinstalling the plugin or contact the developer: https://discord.gg/vehicle";
         if (getServerVersion().is1_16()) {
             if (!(object instanceof net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle)) {
-                Main.logSevere(errorMessage);
+                main.logSevere(errorMessage);
                 return false;
             }
         }

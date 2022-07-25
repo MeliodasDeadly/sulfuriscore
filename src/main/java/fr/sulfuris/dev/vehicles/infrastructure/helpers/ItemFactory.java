@@ -1,7 +1,7 @@
 package fr.sulfuris.dev.vehicles.infrastructure.helpers;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -158,7 +158,7 @@ public class ItemFactory {
                 if (!this.item.getItemMeta().hasEnchant(Enchantment.ARROW_INFINITE))
                     addEnchantGlow();
             } catch (Exception e) {
-                Main.logSevere("Unable to set glowing state to true.");
+                main.logSevere("Unable to set glowing state to true.");
             }
         } else {
             if (this.item.getItemMeta().hasEnchant(Enchantment.ARROW_INFINITE))

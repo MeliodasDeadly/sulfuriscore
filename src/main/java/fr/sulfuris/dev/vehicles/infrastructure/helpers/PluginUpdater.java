@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.helpers;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.ToDo;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.PluginVersion;
@@ -28,7 +28,7 @@ public class PluginUpdater {
 
     private static PluginVersion receiveLatestVersion() {
         if (!isEnabled) {
-            Main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
+            main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
             return null;
         }
         try {
@@ -45,7 +45,7 @@ public class PluginUpdater {
             latestVersionString = receivedValue;
             return PluginVersion.getVersion(receivedValue);
         } catch (IOException ex) {
-            Main.logSevere("The plugin cannot connect to MTVehicles servers. Try again later...");
+            main.logSevere("The plugin cannot connect to MTVehicles servers. Try again later...");
             ex.printStackTrace();
             return null;
         }
@@ -54,7 +54,7 @@ public class PluginUpdater {
     @Deprecated
     private static String[] receiveUpdateMessage() {
         if (!isEnabled) {
-            Main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
+            main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
             return null;
         }
         try {
@@ -74,7 +74,7 @@ public class PluginUpdater {
             }
             return valueMultipleLines;
         } catch (IOException ex) {
-            Main.logSevere("The plugin cannot connect to MTVehicles servers. Try again later...");
+            main.logSevere("The plugin cannot connect to MTVehicles servers. Try again later...");
             ex.printStackTrace();
             return new String[]{""};
         }
@@ -126,9 +126,9 @@ public class PluginUpdater {
      * @param sender Target to whom the message will be sent
      */
     private static void sendUpdateMessage(CommandSender sender) {
-        if (sender == Main.instance.getServer().getConsoleSender()) {
+        if (sender == main.instance.getServer().getConsoleSender()) {
             for (String line : getUpdateMessage()) {
-                Main.logInfo(TextUtils.colorize(line));
+                main.logInfo(TextUtils.colorize(line));
             }
             return;
         }
@@ -157,18 +157,18 @@ public class PluginUpdater {
 
     private static boolean downloadUpdate() {
         if (!isEnabled) {
-            Main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
+            main.logWarning(ConfigModule.messagesConfig.getMessage(Message.UPDATE_DISABLED));
             return false;
         }
         try {
             URL file = new URL("https://minetopiavehicles.nl/api/MTVehicles.jar");
             File dest = new File("plugins");
             InputStream is = file.openStream();
-            File finaldest = new File(dest + "/" + file.getFile().replace("/api/MTVehicles.jar", "/" + Main.getFileAsString().replace("plugins", "")));
+            File finaldest = new File(dest + "/" + file.getFile().replace("/api/MTVehicles.jar", "/" + main.getFileAsString().replace("plugins", "")));
             // File finaldest = new File(dest + "/" + file.getFile());
             finaldest.getParentFile().mkdirs();
             finaldest.createNewFile();
-            Main.logInfo("Reload the server/plugin to finish the plugin update!");
+            main.logInfo("Reload the server/plugin to finish the plugin update!");
 
             OutputStream os = new FileOutputStream(finaldest);
             byte[] data = new byte[1024];
@@ -182,7 +182,7 @@ public class PluginUpdater {
             return true;
 
         } catch (Exception ec) {
-            Main.logSevere("An error occurred whilst trying to download the plugin. (Java 11+ required)");
+            main.logSevere("An error occurred whilst trying to download the plugin. (Java 11+ required)");
             ec.printStackTrace();
             return false;
         }

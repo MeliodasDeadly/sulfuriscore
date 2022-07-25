@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.commands.vehiclesubs;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
 import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
 import fr.sulfuris.dev.vehicles.infrastructure.modules.ConfigModule;
@@ -15,7 +15,7 @@ public class VehicleHelp extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        sendMessage(String.format("&2&lSulfurisVehicles Commands: (%s)", Main.instance.getDescription().getVersion()));
+        sendMessage(String.format("&2&lSulfurisVehicles Commands: (%s)", main.instance.getDescription().getVersion()));
         sendMessage("");
         sendMessage(String.format("&2/vehicle &ainfo &f- &2%s", desc(Message.HELP_INFO)));
         sendMessage(String.format("&2/vehicle &apublic &f- &2%s", desc(Message.HELP_PUBLIC)));

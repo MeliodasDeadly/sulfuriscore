@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.listener;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,9 +8,9 @@ import org.bukkit.event.Listener;
 
 public class deathlistener implements Listener {
 
-    private final Main plugin;
+    private final main plugin;
 
-    public deathlistener(final Main plugin) {
+    public deathlistener(final main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

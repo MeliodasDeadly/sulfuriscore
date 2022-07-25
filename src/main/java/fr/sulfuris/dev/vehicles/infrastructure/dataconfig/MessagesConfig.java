@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.dataconfig;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ConfigType;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Language;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.Message;
@@ -29,8 +29,8 @@ public class MessagesConfig extends Config {
             saveLanguageFile(lang);
         }
         if (!setLanguageFile(ConfigModule.secretSettings.getMessagesLanguage())) {
-            Main.instance.getLogger().severe("Messages.yml for your desired language could not be found. Disabling the plugin...");
-            Main.disablePlugin();
+            main.instance.getLogger().severe("Messages.yml for your desired language could not be found. Disabling the plugin...");
+            main.disablePlugin();
         }
     }
 
@@ -46,7 +46,7 @@ public class MessagesConfig extends Config {
         try {
             msg = TextUtils.colorize((String) this.getConfiguration().get(key));
         } catch (Exception e) {
-            Main.instance.getLogger().severe("An error occurred while retrieving a custom message from the messages.yml!");
+            main.instance.getLogger().severe("An error occurred while retrieving a custom message from the messages.yml!");
         }
         return msg;
     }
@@ -61,7 +61,7 @@ public class MessagesConfig extends Config {
         try {
             msg = TextUtils.colorize(this.getConfiguration().getString(message.getKey()));
         } catch (Exception e) {
-            Main.instance.getLogger().severe("An error occurred while retrieving a custom message from the messages.yml!");
+            main.instance.getLogger().severe("An error occurred while retrieving a custom message from the messages.yml!");
         }
         return msg;
     }
@@ -98,11 +98,11 @@ public class MessagesConfig extends Config {
         String countryCode = (languageCode.equals("ns")) ? "en" : languageCode;
         this.language = (Language.isSupported(languageCode)) ? Language.valueOf(languageCode.toUpperCase(Locale.ROOT)) : Language.CUSTOM;
         String fileName = "messages/messages_" + countryCode + ".yml";
-        File languageFile = new File(Main.instance.getDataFolder(), fileName);
+        File languageFile = new File(main.instance.getDataFolder(), fileName);
         if (!languageFile.exists()) return false;
 
         this.setFileName(fileName);
-        this.setConfigFile(new File(Main.instance.getDataFolder(), fileName));
+        this.setConfigFile(new File(main.instance.getDataFolder(), fileName));
         this.reload();
         return true;
     }
@@ -115,8 +115,8 @@ public class MessagesConfig extends Config {
     private void saveLanguageFile(String countryCode) {
         String fileName = "messages/messages_" + countryCode + ".yml";
 
-        File languageFile = new File(Main.instance.getDataFolder(), fileName);
-        if (!languageFile.exists()) Main.instance.saveResource(fileName, false);
+        File languageFile = new File(main.instance.getDataFolder(), fileName);
+        if (!languageFile.exists()) main.instance.saveResource(fileName, false);
     }
 
     /**
@@ -126,10 +126,10 @@ public class MessagesConfig extends Config {
      */
     public void saveNewLanguageFiles(String time) {
         for (String lang : Language.getAllLanguages()) {
-            File messagesFile = new File(Main.instance.getDataFolder(), "messages/messages_" + lang + ".yml");
+            File messagesFile = new File(main.instance.getDataFolder(), "messages/messages_" + lang + ".yml");
             if (!messagesFile.exists()) continue;
-            messagesFile.renameTo(new File(Main.instance.getDataFolder(), "messages/messages_" + lang + "Old_" + time + ".yml"));
-            Main.instance.saveResource("messages/messages_" + lang + ".yml", true);
+            messagesFile.renameTo(new File(main.instance.getDataFolder(), "messages/messages_" + lang + "Old_" + time + ".yml"));
+            main.instance.saveResource("messages/messages_" + lang + ".yml", true);
         }
     }
 }

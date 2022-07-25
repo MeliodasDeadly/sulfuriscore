@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.models;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ConfigType;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -45,7 +45,7 @@ public abstract class Config {
      */
     public void reload() {
         if (configFile == null) {
-            setConfigFile(new File(Main.instance.getDataFolder(), fileName));
+            setConfigFile(new File(main.instance.getDataFolder(), fileName));
         }
         if (!configFile.exists())
             this.saveDefaultConfig();
@@ -53,7 +53,7 @@ public abstract class Config {
         config = YamlConfiguration.loadConfiguration(configFile);
 
         Reader defConfigStream;
-        defConfigStream = new InputStreamReader(Objects.requireNonNull(Main.instance.getResource(fileName)), StandardCharsets.UTF_8);
+        defConfigStream = new InputStreamReader(Objects.requireNonNull(main.instance.getResource(fileName)), StandardCharsets.UTF_8);
         YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
         config.setDefaults(defConfig);
     }
@@ -98,7 +98,7 @@ public abstract class Config {
         try {
             getConfiguration().save(configFile);
         } catch (IOException ex) {
-            Main.instance.getLogger().log(Level.SEVERE, "Could not save config to " + configFile, ex);
+            main.instance.getLogger().log(Level.SEVERE, "Could not save config to " + configFile, ex);
         }
         this.reload();
         return true;
@@ -109,10 +109,10 @@ public abstract class Config {
      */
     public void saveDefaultConfig() {
         if (configFile == null) {
-            configFile = new File(Main.instance.getDataFolder(), fileName);
+            configFile = new File(main.instance.getDataFolder(), fileName);
         }
         if (!configFile.exists()) {
-            Main.instance.saveResource(fileName, false);
+            main.instance.saveResource(fileName, false);
         }
     }
 

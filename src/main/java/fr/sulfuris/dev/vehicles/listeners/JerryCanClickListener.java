@@ -1,7 +1,7 @@
 package fr.sulfuris.dev.vehicles.listeners;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.commands.vehiclesubs.VehicleFuel;
 import fr.sulfuris.dev.vehicles.events.JerryCanClickEvent;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
@@ -123,14 +123,14 @@ public class JerryCanClickListener extends SulfuVListener {
             try {
                 player.getWorld().playSound(player.getLocation(), Sound.valueOf("BLOCK_NOTE_PLING"), 3.0F, 0.5F);
             } catch (IllegalArgumentException e) {
-                Main.logSevere("Could not play sound 'BLOCK_NOTE_PLING'.");
+                main.logSevere("Could not play sound 'BLOCK_NOTE_PLING'.");
                 e.printStackTrace(); //The sound could not be played, hmmm.
             }
         } else {
             try {
                 player.getWorld().playSound(player.getLocation(), Sound.valueOf("BLOCK_NOTE_BLOCK_PLING"), 3.0F, 0.5F);
             } catch (IllegalArgumentException e) {
-                Main.logSevere("Could not play sound 'BLOCK_NOTE_BLOCK_PLING'.");
+                main.logSevere("Could not play sound 'BLOCK_NOTE_BLOCK_PLING'.");
                 e.printStackTrace(); //The sound could not be played, hmmm.
             }
         }

@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.admin;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.data.Utils;
 import org.bukkit.Bukkit;
@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 
 public class removeCommand implements CommandExecutor {
     // same of resetCommand
-    private Main plugin;
+    private main plugin;
 
-    public removeCommand(Main plugin) {
+    public removeCommand(main plugin) {
         this.plugin = plugin;
         plugin.getCommand("removedata").setExecutor((CommandExecutor) this);
     }

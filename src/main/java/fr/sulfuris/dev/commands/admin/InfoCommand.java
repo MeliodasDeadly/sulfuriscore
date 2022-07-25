@@ -1,15 +1,15 @@
 package fr.sulfuris.dev.commands.admin;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.data.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class InfoCommand implements CommandExecutor {
-    private Main plugin;
+    private main plugin;
 
-    public InfoCommand(final Main plugin) {
+    public InfoCommand(final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("serverinfo").setExecutor((CommandExecutor) this);
     }

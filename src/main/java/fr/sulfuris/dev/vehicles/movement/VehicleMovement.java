@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.sulfuris.dev.Main.schedulerRun;
+import static fr.sulfuris.dev.main.schedulerRun;
 import static fr.sulfuris.dev.vehicles.infrastructure.modules.VersionModule.getServerVersion;
 import static fr.sulfuris.dev.vehicles.movement.PacketHandler.isObjectPacket;
 

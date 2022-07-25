@@ -35,19 +35,19 @@ import java.util.logging.Level;
 import static fr.sulfuris.dev.data.DatabaseUser.dbSetup;
 
 
-public final class Main extends JavaPlugin {
+public final class main extends JavaPlugin {
 
     public static FileConfiguration config;
     final public static String configVersion = "2.4.0";
     final public static String messagesVersion = "2.4.3-dev6";
     public static Plugin instance;
-    private static Main plugin;
+    private static main plugin;
 
-    public Main() {
+    public main() {
         this.config = this.getConfig();
     }
 
-    public static Main getPlugin() {
+    public static main getPlugin() {
         return plugin;
     }
 

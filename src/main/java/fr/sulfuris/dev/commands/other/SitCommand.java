@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.commands.other;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 
 public class SitCommand implements CommandExecutor {
 
-    private Main plugin;
+    private main plugin;
 
-    public SitCommand(final Main plugin) {
+    public SitCommand(final main plugin) {
         this.plugin = plugin;
         plugin.getCommand("sit").setExecutor((CommandExecutor) this);
     }

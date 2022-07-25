@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.modules;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.commands.VehicleSubCommandManager;
 import fr.sulfuris.dev.vehicles.commands.VehicleTabCompleterManager;
 import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
@@ -26,7 +26,7 @@ public class CommandModule {
      * Constructor which registers executor and tab completer
      */
     public CommandModule() {
-        PluginCommand pluginCommand = Main.getPlugin().getCommand("svehicles");
+        PluginCommand pluginCommand = main.getPlugin().getCommand("svehicles");
 
         if (pluginCommand != null) {
             pluginCommand.setExecutor(new VehicleSubCommandManager());
