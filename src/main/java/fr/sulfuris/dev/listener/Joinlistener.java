@@ -35,14 +35,14 @@ public class Joinlistener implements Listener {
     public void onJoin(org.bukkit.event.player.PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PersistentDataContainer data = player.getPersistentDataContainer();
-        /*if(data.get(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER)){
+        if(data.get(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER)){
             StoringData.money(player);
-            plugin.getLogger().log(Level.INFO, Utils.chat("&aPlayer " + event.getPlayer().getName() + " has been added to the database"));
+            plugin.getLogger().log(Level.INFO, Utils.chat("§aPlayer " + event.getPlayer().getName() + " has been added to the database"));
         }
         if(data.get(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER)){
             StoringData.job(player);
-            plugin.getLogger().log(Level.INFO, "&aPlayer " + player.getName() + " &ahas no job, setting to default job");
-        }*/
+            plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §ahas no job, setting to default job");
+        }
 
 
 

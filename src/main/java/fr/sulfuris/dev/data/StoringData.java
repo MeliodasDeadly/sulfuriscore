@@ -26,6 +26,15 @@ public class StoringData extends JavaPlugin {
             data.set(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.STRING, valueOf(main.getPlugin().getConfig().getInt("default-job-value")));
         }
     }
+    public static void getData(Player player, String dataI) {
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        if(!data.has(new NamespacedKey(main.getPlugin(), dataI), PersistentDataType.STRING)) {
+            return;
+        }
+        if(data.has(new NamespacedKey(main.getPlugin(), dataI), PersistentDataType.STRING)) {
+            System.out.println(data.get(new NamespacedKey(main.getPlugin(), dataI), PersistentDataType.STRING));
+        }
+    }
     public static void setMoney(Player player, int amount) {
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.set(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.STRING, valueOf(amount));
@@ -48,7 +57,7 @@ public class StoringData extends JavaPlugin {
     }
     public static void setJob(Player player, int job) {
         PersistentDataContainer data = player.getPersistentDataContainer();
-        data.set(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.STRING, valueOf(job));
+        data.set(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.STRING, valueOf(job));
     }
     public static int getJob(Player player) {
         PersistentDataContainer data = player.getPersistentDataContainer();

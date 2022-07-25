@@ -1,5 +1,6 @@
 package fr.sulfuris.dev.gui;
 import fr.sulfuris.dev.data.StoringData;
+import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.itemstack.bank.infoitemstack;
 import fr.sulfuris.dev.itemstack.bank.jobitemstack;
 import fr.sulfuris.dev.itemstack.bank.loginitemstack;
@@ -43,6 +44,7 @@ public class atmgui implements Listener {
 
             if(item.getType() == Material.GOLD_NUGGET){
                 player.openInventory(inv);
+                event.setCancelled(true);
             }
 
 
@@ -52,7 +54,7 @@ public class atmgui implements Listener {
     }
     @EventHandler
     public void OnClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() != null && event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7SE CONNECTER")) {
+        if (event.getCurrentItem() != null && event.getCurrentItem().getItemMeta() != null && event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7SE CONNECTER")) {
             Player playeri = (Player) event.getWhoClicked();
             Plugin plugin = main.getPlugin();
 
@@ -64,20 +66,22 @@ public class atmgui implements Listener {
 
 
                 new AnvilGUI.Builder()
-                        .onClose(player -> {                                               //called when the inventory is closing
-                            player.sendMessage("You closed the inventory.");
-                        })
                         .onComplete((player, text) -> {                                    //called when the inventory output slot is clicked
                             if(text.equalsIgnoreCase(null)) {
                                 return AnvilGUI.Response.text("You must enter a password");
-                            } else {
-                                data.set(new NamespacedKey(plugin, "password"), PersistentDataType.STRING, text);
-                                playeri.openInventory(inv);
-                                event.setCancelled(true);
-                                return AnvilGUI.Response.text("Mot de passe mit a jour");
+                            } else if (text.length() < 4) {
+                                return AnvilGUI.Response.text("Password must be at least 4 characters");
+                            } else if (!Utils.isNumeric(text)) {
+                                return AnvilGUI.Response.text("Password must be numeric");
+
+                            } else if (Utils.isNumeric(text)) {
+                                     data.set(new NamespacedKey(plugin, "password"), PersistentDataType.STRING, text);
+                                    playeri.sendMessage("§aMot de passe mit a jour");
+                                    return AnvilGUI.Response.close();
+                            }else {
+                                return AnvilGUI.Response.text("You must enter a password");
                             }
                         })
-                        .preventClose()
                         .text("Entrez votre mot de passe")
                         .itemLeft(new ItemStack(Material.PAPER))
                         .title("§7Connexion")
@@ -94,9 +98,6 @@ public class atmgui implements Listener {
 
 
                 new AnvilGUI.Builder()
-                        .onClose(player -> {                                               //called when the inventory is closing
-                            player.sendMessage("You closed the ATM.");
-                        })
                         .onComplete((player, text) -> {                                    //called when the inventory output slot is clicked
                             if(text.equalsIgnoreCase(valueOf(data.get(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)))) {
                                 player.openInventory(inv);
@@ -106,7 +107,6 @@ public class atmgui implements Listener {
                                 return AnvilGUI.Response.text("Incorrect.");
                             }
                         })
-                        .preventClose()
                         .text("Entrez votre code")
                         .itemLeft(new ItemStack(Material.PAPER))
                         .title("§7Connexion")
