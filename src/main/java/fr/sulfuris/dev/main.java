@@ -20,6 +20,7 @@ import fr.sulfuris.dev.config.listenerconfig;
 import fr.sulfuris.dev.config.mainconfig;
 import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.gui.atmgui;
+import fr.sulfuris.dev.gui.keypadgui;
 import fr.sulfuris.dev.listener.Joinlistener;
 import fr.sulfuris.dev.listener.deathlistener;
 import fr.sulfuris.dev.vehicles.infrastructure.modules.*;
@@ -119,6 +120,7 @@ public final class main extends JavaPlugin {
         new deathlistener(this);
         new Joinlistener(this);
         new atmgui(this);
+        new keypadgui(this);
 
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Database"));
         new Thread(){

@@ -78,7 +78,7 @@ public class atmgui implements Listener {
                                      data.set(new NamespacedKey(plugin, "password"), PersistentDataType.STRING, text);
                                     playeri.sendMessage("§aMot de passe mit a jour");
                                     return AnvilGUI.Response.close();
-                            }else {
+                            } else {
                                 return AnvilGUI.Response.text("You must enter a password");
                             }
                         })
@@ -98,7 +98,7 @@ public class atmgui implements Listener {
 
 
                 new AnvilGUI.Builder()
-                        .onComplete((player, text) -> {                                    //called when the inventory output slot is clicked
+                        .onComplete((player, text) -> {
                             if(text.equalsIgnoreCase(valueOf(data.get(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)))) {
                                 event.setCancelled(true);
                                 player.openInventory(inv);
