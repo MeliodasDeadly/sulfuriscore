@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class giveCommand implements CommandExecutor {
-    // same of resetCommand
 
     public main plugin;
 

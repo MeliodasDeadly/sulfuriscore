@@ -5,9 +5,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * <b>/vehicle delete</b> - Delete held vehicle from the database (vehicleData.yml).
- */
 public class VehicleDelete extends SulfuVehicleSubCommand {
     public VehicleDelete() {
         this.setPlayerCommand(true);
@@ -15,7 +12,7 @@ public class VehicleDelete extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.delete")) return true;
+        if (!checkPermission("svehicles.delete")) return true;
 
         ItemStack item = player.getInventory().getItemInMainHand();
 

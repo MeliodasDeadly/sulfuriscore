@@ -17,7 +17,6 @@ public class BoosterCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
-        // const target is the argument after the command
         Server server = plugin.getServer();
         Player target = server.getPlayer(args[0]);
 

@@ -17,9 +17,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * On inventory close
- */
 public class InventoryCloseListener extends SulfuVListener {
     public static HashMap<String, Double> speed = new HashMap<>();
 

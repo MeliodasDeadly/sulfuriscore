@@ -13,60 +13,30 @@ import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Methods for config.yml.<br>
- * <b>Do not initialise this class directly. Use {@link ConfigModule#defaultConfig} instead.</b>
- */
 public class DefaultConfig extends Config {
     private GasStationConfig gasStations = new GasStationConfig();
 
-    /**
-     * Default constructor - <b>do not use this.</b><br>
-     * Use {@link ConfigModule#defaultConfig} instead.
-     */
-    public DefaultConfig() {
-        super(ConfigType.DEFAULT);
-    }
+        public DefaultConfig() {
+            super(ConfigType.DEFAULT);
+        }
 
-    /**
-     * Get value of a config option specified by a String.
-     *
-     * @deprecated This may lead to issues - use {@link #get(Option)} instead.
-     */
     @Deprecated
     public String getMessage(String key) {
         return TextUtils.colorize(this.getConfiguration().getString(key));
     }
 
-    /**
-     * Get a value of an option from config.yml
-     *
-     * @param configOption Config.yml option
-     * @return Value of the option (as Object)
-     */
     public Object get(Option configOption) {
         return this.getConfiguration().get(configOption.getPath());
     }
 
-    //--- DriveUp ---
 
-    /**
-     * Check whether the last version (before an update) was using an older method of checking the config version.
-     * This is present only for compatibility when updating from lower versions.
-     *
-     * @return True if the "Config-Versie" option was still present in config.yml.
-     */
     public boolean hasOldVersionChecking() {
         return this.getConfiguration().get("Config-Versie") != null;
     }
 
-    //--- Gas stations ---
 
-    /**
-     * Check which driveUp option is specified in config.yml (BLOCKS/SLABS/BOTH).
-     */
     public DriveUp driveUpSlabs() {
-        DriveUp returns = DriveUp.BOTH; //default value
+        DriveUp returns = DriveUp.BOTH;
         try {
             switch (Objects.requireNonNull(get(Option.DRIVE_UP).toString().toLowerCase())) {
                 case "blocks":
@@ -79,21 +49,13 @@ public class DefaultConfig extends Config {
                     break;
             }
         } catch (NullPointerException e) {
-            //driveUp was not set up correctly in config and thus it's using the default = both.
         }
         return returns;
     }
 
-    /**
-     * Check whether a jerrycan may be used on a specified location.
-     *
-     * @param loc Location
-     * @return True if gas stations are enabled, player is outside a region with flag 'mtvgasstation=deny' and inside a gas station if necessary.
-     */
     public boolean canUseJerryCan(Location loc) {
         if (!gasStations.areGasStationsEnabled()) return true;
 
-        //If a player is in region with 'mtvgasstation=deny', they can't use jerrycans.
         if (DependencyModule.worldGuard.isInRegionWithFlag(loc, "mtv-gasstation", false)) return false;
 
         if (gasStations.canUseJerryCanOutsideOfGasStation()) return true;
@@ -101,21 +63,10 @@ public class DefaultConfig extends Config {
         return gasStations.isInsideGasStation(loc);
     }
 
-    /**
-     * Whether a player can use a jerrycan on their location.
-     *
-     * @param p Player
-     * @see #canUseJerryCan(Location)
-     */
     public boolean canUseJerryCan(Player p) {
         return canUseJerryCan(p.getLocation());
     }
 
-    /**
-     * Check whether a jerrycan may be filled by a specified player on a specified location.
-     *
-     * @return True if jerrycan may be filled.
-     */
     public boolean canFillJerryCans(Player p, Location loc) {
         if (!gasStations.areGasStationsEnabled()) return false;
         if (!gasStations.isFillJerryCansEnabled()) return false;
@@ -128,89 +79,53 @@ public class DefaultConfig extends Config {
         return true;
     }
 
-    /**
-     * Check whether jerrycan sounds are turned on in config.yml.
-     */
     public boolean jerryCanPlaySound() {
         return (boolean) get(Option.GAS_STATIONS_FILL_JERRYCANS_PLAY_SOUND);
     }
 
-    /**
-     * Check whether jerrycan may be filled by clicking on LEVERS.
-     */
     public boolean isFillJerryCansLeverEnabled() {
         return (boolean) get(Option.GAS_STATIONS_FILL_JERRYCANS_LEVER);
     }
 
-    /**
-     * Check whether jerrycan may be filled by clicking on TRIPWIRE HOOKS.
-     */
     public boolean isFillJerryCansTripwireHookEnabled() {
         return (boolean) get(Option.GAS_STATIONS_FILL_JERRYCANS_TRIPWIRE_HOOK);
     }
 
-    /**
-     * If prices for jerrycan filling are enabled.
-     */
     public boolean isFillJerryCanPriceEnabled() {
         if (!gasStations.areGasStationsEnabled()) return false;
         if (!gasStations.isFillJerryCansEnabled()) return false;
         if (!DependencyModule.isDependencyEnabled(SoftDependency.VAULT))
-            return false; //If Vault isn't installed, say it's not enabled.
-
+            return false;
         return (boolean) get(Option.GAS_STATIONS_FILL_JERRYCANS_PRICE_ENABLED);
     }
 
-    /**
-     * Get the price of fuel (per litre).
-     */
     public double getFillJerryCanPrice() {
         if ((double) get(Option.GAS_STATIONS_FILL_JERRYCANS_PRICE_PER_LITRE) <= 0)
-            return 30.0; //Default, if it's not greater than 0
+            return 30.0;
         else return (double) get(Option.GAS_STATIONS_FILL_JERRYCANS_PRICE_PER_LITRE);
     }
 
-    /**
-     * Check whether a world is disabled.
-     *
-     * @param worldName Name of the world
-     * @return True if disabled.
-     */
     public boolean isWorldDisabled(String worldName) {
         if (getDisabledWorlds().isEmpty()) return false;
         return getDisabledWorlds().contains(worldName);
     }
 
-    //--- Disabled Worlds ---
 
-    /**
-     * Get the list of all disabled worlds.
-     */
     private List<String> getDisabledWorlds() {
         return (List<String>) get(Option.DISABLED_WORLDS);
     }
 
-    /**
-     * Check whether block whitelist is enabled.
-     */
     public boolean isBlockWhitelistEnabled() {
         return (boolean) get(Option.BLOCK_WHITELIST_ENABLED);
     }
 
-    //--- Block Whitelist ---
 
-    /**
-     * Get the list of all whitelisted blocks.
-     */
     public List<Material> blockWhiteList() {
         return ((List<String>) get(Option.BLOCK_WHITELIST_LIST)).stream().map(Material::getMaterial).collect(Collectors.toList());
     }
 
-    /**
-     * Get ListType (DISABLED/WHITELIST/BLACKLIST) for an action (PLACE/PICKUP/ENTER) from config.yml.
-     */
     private RegionAction.ListType getRegionActionListType(RegionAction action) {
-        String configOption = "disabled"; //Default
+        String configOption = "disabled";
         switch (action) {
             case PLACE:
                 configOption = get(Option.REGION_ACTIONS_PLACE).toString().toLowerCase(Locale.ROOT);
@@ -227,16 +142,7 @@ public class DefaultConfig extends Config {
         else return RegionAction.ListType.DISABLED;
     }
 
-    //--- Region Actions ---
 
-    /**
-     * Check whether a player can proceed with a specified action on a specified location.
-     *
-     * @param action      Action (PLACE/PICKUP/ENTER)
-     * @param vehicleType Type of the vehicle (enum)
-     * @param loc         Location
-     * @return True if nothing prevents the player from proceeding.
-     */
     public boolean canProceedWithAction(RegionAction action, VehicleType vehicleType, Location loc) {
         if (isWorldDisabled(loc.getWorld().getName())) return false;
 
@@ -273,20 +179,11 @@ public class DefaultConfig extends Config {
         return returns;
     }
 
-    /**
-     * Check whether vehicles are steered using where drivers are facing.
-     *
-     * @return True if this is enabled.
-     */
     public boolean usePlayerFacingDriving() {
         return (boolean) get(Option.USE_PLAYER_FACING);
     }
 
-    //--- Driving ---
 
-    /**
-     * Options available in MTV's default configuration file (config.yml)
-     */
     public enum Option {
         AUTO_UPDATE("autoUpdate", true),
         VEHICLE_MENU_SIZE("vehicleMenuSize", 3),
@@ -335,29 +232,14 @@ public class DefaultConfig extends Config {
             this.defaultValue = defaultValue;
         }
 
-        /**
-         * Get default value of option
-         *
-         * @return Default value of option
-         */
         public Object getDefaultValue() {
             return defaultValue;
         }
 
-        /**
-         * Get string path of option
-         *
-         * @return Path of option
-         */
         public String getPath() {
             return path;
         }
 
-        /**
-         * Get (default) type of option
-         *
-         * @return Default type of option
-         */
         public Type getValueType() {
             return this.getDefaultValue().getClass();
         }
@@ -367,8 +249,7 @@ public class DefaultConfig extends Config {
 
         private boolean areGasStationsEnabled() {
             if (!DependencyModule.isDependencyEnabled(SoftDependency.WORLD_GUARD))
-                return false; //If WorldGuard isn't installed, say it's not enabled.
-
+                return false;
             return (boolean) get(Option.GAS_STATIONS_ENABLED);
         }
 
@@ -386,8 +267,8 @@ public class DefaultConfig extends Config {
 
         private boolean hasFillJerryCansPermission(Player p) {
             if (!(boolean) get(Option.GAS_STATIONS_FILL_JERRYCANS_NEED_PERMISSION))
-                return true; //if there's set that they don't need the permission, just pretend they have it
-            return p.hasPermission("mtvehicles.filljerrycans");
+                return true;
+            return p.hasPermission("svehicles.filljerrycans");
         }
 
     }

@@ -16,9 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * <b>/vehicle menu</b> - open a GUI menu of all the vehicles.
- */
 public class VehicleMenu extends SulfuVehicleSubCommand {
     public static HashMap<UUID, Inventory> beginMenu = new HashMap<>();
 
@@ -28,7 +25,7 @@ public class VehicleMenu extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.menu")) return true;
+        if (!checkPermission("svehicles.menu")) return true;
 
         sendMessage(Message.MENU_OPEN);
 

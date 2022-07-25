@@ -12,9 +12,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-/**
- * <b>/vehicle setowner %player%</b> - set held vehicle's owner.
- */
 public class VehicleSetOwner extends SulfuVehicleSubCommand {
     public VehicleSetOwner() {
         this.setPlayerCommand(true);
@@ -26,7 +23,7 @@ public class VehicleSetOwner extends SulfuVehicleSubCommand {
 
         boolean playerSetOwner = (boolean) ConfigModule.defaultConfig.get(DefaultConfig.Option.PUT_ONESELF_AS_OWNER);
 
-        if (!playerSetOwner && !checkPermission("mtvehicles.setowner")) {
+        if (!playerSetOwner && !checkPermission("svehicles.setowner")) {
             return true;
         }
 
@@ -53,7 +50,7 @@ public class VehicleSetOwner extends SulfuVehicleSubCommand {
         Vehicle vehicle = VehicleUtils.getVehicle(licensePlate);
         assert vehicle != null;
 
-        if ((playerSetOwner || !player.hasPermission("mtvehicles.setowner")) && !vehicle.isOwner(player)) {
+        if ((playerSetOwner || !player.hasPermission("svehicles.setowner")) && !vehicle.isOwner(player)) {
             sendMessage(Message.NOT_YOUR_CAR);
             return true;
         }

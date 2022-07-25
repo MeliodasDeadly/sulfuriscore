@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 import org.bukkit.entity.Player;
 
-/**
- * On vehicle add rider (/vehicle addrider command). Riders are players who may steer the vehicle.
- */
 public class VehicleAddRiderEvent extends SulfuVEvent implements IsCancellable, HasVehicle {
     private String licensePlate;
     private Player addedPlayer;
@@ -34,25 +31,14 @@ public class VehicleAddRiderEvent extends SulfuVEvent implements IsCancellable, 
         return VehicleUtils.getVehicle(licensePlate);
     }
 
-    /**
-     * Get the player who used /vehicle addrider command
-     *
-     * @see #getPlayer()
-     */
-    public Player getAdder() {
-        return super.getPlayer();
-    }
+        public Player getAdder() {
+            return super.getPlayer();
+        }
 
-    /**
-     * Get the player who is being added as a rider
-     */
     public Player getAdded() {
         return addedPlayer;
     }
 
-    /**
-     * Set the player who is being added as a rider
-     */
     public void setAdded(Player player) {
         this.addedPlayer = player;
     }

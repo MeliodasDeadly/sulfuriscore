@@ -20,27 +20,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * Methods for editing text (and for some reason also deprecated methods for creating vehicles - moved to {@link VehicleUtils} and {@link fr.sulfuris.dev.vehicles.listeners.VehicleClickListener})
- */
 public class TextUtils {
-    /**
-     * Colorize a String with the ampersand characters.
-     *
-     * @param text Text
-     * @return Colorized text
-     */
-    public static String colorize(String text) {
-        return ChatColor.translateAlternateColorCodes('&', text);
-    }
+        public static String colorize(String text) {
+            return ChatColor.translateAlternateColorCodes('&', text);
+        }
 
-    /**
-     * Get license plate from vehicle armor stand's name
-     *
-     * @param license Name of the vehicle
-     * @return Vehicle's license plate
-     * @deprecated Use {@link VehicleUtils#getLicensePlate(Entity)} instead.
-     */
     @Deprecated
     public static String licenseReplacer(String license) {
         if (license.split("_").length > 1) {
@@ -49,9 +33,6 @@ public class TextUtils {
         return null;
     }
 
-    /**
-     * Get a List from multiple Strings
-     */
     public static List<String> list(String... strings) {
         return Arrays.asList(strings);
     }
@@ -59,33 +40,30 @@ public class TextUtils {
     @Deprecated
     private static void basicStandCreator(String license, String type, Location location, ItemStack item, Boolean gravity) {
         ArmorStand as = location.getWorld().spawn(location, ArmorStand.class);
-        as.setCustomName("MTVEHICLES_" + type + "_" + license);
+        as.setCustomName("svehicles_" + type + "_" + license);
         as.setHelmet(item);
         as.setGravity(gravity);
         as.setVisible(false);
-        VehicleData.autostand.put("MTVEHICLES_" + type + "_" + license, as);
+        VehicleData.autostand.put("svehicles_" + type + "_" + license, as);
     }
 
     @Deprecated
     private static void mainSeatStandCreator(String license, Location location, Player p, double x, double y, double z) {
         Location location2 = new Location(location.getWorld(), location.getX() + Double.valueOf(z), location.getY() + Double.valueOf(y), location.getZ() + Double.valueOf(z));
         ArmorStand as = location2.getWorld().spawn(location2, ArmorStand.class);
-        as.setCustomName("MTVEHICLES_MAINSEAT_" + license);
-        VehicleData.autostand.put("MTVEHICLES_MAINSEAT_" + license, as);
+        as.setCustomName("svehicles_MAINSEAT_" + license);
+        VehicleData.autostand.put("svehicles_MAINSEAT_" + license, as);
         as.setGravity(false);
         VehicleData.speed.put(license, 0.0);
         VehicleData.speedhigh.put(license, 0.0);
-        VehicleData.mainx.put("MTVEHICLES_MAINSEAT_" + license, x);
-        VehicleData.mainy.put("MTVEHICLES_MAINSEAT_" + license, y);
-        VehicleData.mainz.put("MTVEHICLES_MAINSEAT_" + license, z);
+        VehicleData.mainx.put("svehicles_MAINSEAT_" + license, x);
+        VehicleData.mainy.put("svehicles_MAINSEAT_" + license, y);
+        VehicleData.mainz.put("svehicles_MAINSEAT_" + license, z);
         as.setPassenger(p);
         as.setVisible(false);
         VehicleData.autostand2.put(license, as);
     }
 
-    /**
-     * @deprecated This method somehow worked, no idea how though. Use {@link VehicleUtils#enterVehicle(String, Player)} instead.
-     */
     @Deprecated
     public static void createVehicle(String licensePlate, Player p) {
         if (!(VehicleData.autostand2.get(licensePlate) == null)) {
@@ -98,12 +76,12 @@ public class TextUtils {
             ConfigModule.messagesConfig.sendMessage(p, Message.VEHICLE_NOT_FOUND);
             return;
         }
-        if (!vehicle.isOwner(p) && !vehicle.canRide(p) && !p.hasPermission("mtvehicles.ride")) {
+        if (!vehicle.isOwner(p) && !vehicle.canRide(p) && !p.hasPermission("svehicles.ride")) {
             p.sendMessage(TextUtils.colorize(ConfigModule.messagesConfig.getMessage(Message.VEHICLE_NO_RIDER_ENTER).replace("%p%", VehicleUtils.getVehicle(licensePlate).getOwnerName())));
             return;
         }
         for (Entity entity : p.getWorld().getEntities()) {
-            if ((boolean) ConfigModule.defaultConfig.get(DefaultConfig.Option.DISABLE_PICKUP_FROM_WATER) && !p.hasPermission("mtvehicles.anwb") && (entity.getLocation().clone().add(0.0, 0.9, 0.0).getBlock().getType().toString().contains("WATER"))) {
+            if ((boolean) ConfigModule.defaultConfig.get(DefaultConfig.Option.DISABLE_PICKUP_FROM_WATER) && !p.hasPermission("svehicles.anwb") && (entity.getLocation().clone().add(0.0, 0.9, 0.0).getBlock().getType().toString().contains("WATER"))) {
                 ConfigModule.messagesConfig.sendMessage(p, Message.VEHICLE_IN_WATER);
                 return;
             }
@@ -130,7 +108,7 @@ public class TextUtils {
                     return;
                 }
 
-                if (vehicleAs.getCustomName().contains("MTVEHICLES_SKIN_" + licensePlate)) {
+                if (vehicleAs.getCustomName().contains("svehicles_SKIN_" + licensePlate)) {
                     TextUtils.basicStandCreator(licensePlate, "SKIN", location, vehicleAs.getHelmet(), false);
                     TextUtils.basicStandCreator(licensePlate, "MAIN", location, null, true);
                     List<Map<String, Double>> seats = (List<Map<String, Double>>) vehicle.getVehicleData().get("seats");
@@ -143,15 +121,15 @@ public class TextUtils {
                         }
                         if (i > 1) {
                             VehicleData.seatsize.put(licensePlate, seats.size());
-                            VehicleData.seatx.put("MTVEHICLES_SEAT" + (Integer) i + "_" + licensePlate, seat.get("x"));
-                            VehicleData.seaty.put("MTVEHICLES_SEAT" + (Integer) i + "_" + licensePlate, seat.get("y"));
-                            VehicleData.seatz.put("MTVEHICLES_SEAT" + (Integer) i + "_" + licensePlate, seat.get("z"));
+                            VehicleData.seatx.put("svehicles_SEAT" + (Integer) i + "_" + licensePlate, seat.get("x"));
+                            VehicleData.seaty.put("svehicles_SEAT" + (Integer) i + "_" + licensePlate, seat.get("y"));
+                            VehicleData.seatz.put("svehicles_SEAT" + (Integer) i + "_" + licensePlate, seat.get("z"));
                             Location location2 = new Location(location.getWorld(), location.getX() + Double.valueOf(seat.get("z")), location.getY() + Double.valueOf(seat.get("y")), location.getZ() + Double.valueOf(seat.get("x")));
                             ArmorStand as = location2.getWorld().spawn(location2, ArmorStand.class);
-                            as.setCustomName("MTVEHICLES_SEAT" + (Integer) i + "_" + licensePlate);
+                            as.setCustomName("svehicles_SEAT" + (Integer) i + "_" + licensePlate);
                             as.setGravity(false);
                             as.setVisible(false);
-                            VehicleData.autostand.put("MTVEHICLES_SEAT" + (Integer) i + "_" + licensePlate, as);
+                            VehicleData.autostand.put("svehicles_SEAT" + (Integer) i + "_" + licensePlate, as);
                         }
                     }
                     List<Map<String, Double>> wiekens = (List<Map<String, Double>>) vehicle.getVehicleData().get("wiekens");
@@ -162,14 +140,14 @@ public class TextUtils {
                             Map<?, ?> seat = wiekens.get(i - 1);
                             if (i == 1) {
                                 Location location2 = new Location(location.getWorld(), location.getX() + (Double) seat.get("z"), (Double) location.getY() + (Double) seat.get("y"), location.getZ() + (Double) seat.get("x"));
-                                VehicleData.wiekenx.put("MTVEHICLES_WIEKENS_" + licensePlate, (Double) seat.get("x"));
-                                VehicleData.wiekeny.put("MTVEHICLES_WIEKENS_" + licensePlate, (Double) seat.get("y"));
-                                VehicleData.wiekenz.put("MTVEHICLES_WIEKENS_" + licensePlate, (Double) seat.get("z"));
+                                VehicleData.wiekenx.put("svehicles_WIEKENS_" + licensePlate, (Double) seat.get("x"));
+                                VehicleData.wiekeny.put("svehicles_WIEKENS_" + licensePlate, (Double) seat.get("y"));
+                                VehicleData.wiekenz.put("svehicles_WIEKENS_" + licensePlate, (Double) seat.get("z"));
                                 ArmorStand as = location2.getWorld().spawn(location2, ArmorStand.class);
-                                as.setCustomName("MTVEHICLES_WIEKENS_" + licensePlate);
+                                as.setCustomName("svehicles_WIEKENS_" + licensePlate);
                                 as.setGravity(false);
                                 as.setVisible(false);
-                                VehicleData.autostand.put("MTVEHICLES_WIEKENS_" + licensePlate, as);
+                                VehicleData.autostand.put("svehicles_WIEKENS_" + licensePlate, as);
                                 as.setHelmet((ItemStack) seat.get("item"));
                             }
                         }
@@ -180,24 +158,11 @@ public class TextUtils {
         }
     }
 
-    /**
-     * Pick up a vehicle and put it to player's inventory
-     *
-     * @param ken Vehicle's license plate
-     * @param p   Player
-     * @deprecated Moved. Use {@link VehicleUtils#pickupVehicle(String, Player)}.
-     */
     @Deprecated
     public static void pickupVehicle(String ken, Player p) {
         VehicleUtils.pickupVehicle(ken, p);
     }
 
-    /**
-     * Check whether player's inventory is full
-     *
-     * @param player Player
-     * @return True if player's inventory is full
-     */
     public static boolean checkInvFull(Player player) {
         return !Arrays.asList(player.getInventory().getStorageContents()).contains(null);
     }

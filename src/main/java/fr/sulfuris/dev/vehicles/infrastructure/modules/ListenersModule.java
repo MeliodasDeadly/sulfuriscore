@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.listeners.inventory.InventoryCloseListener;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Module which registers all listeners used by the plugin
- */
 public class ListenersModule {
     private static @Getter
     @Setter

@@ -20,9 +20,6 @@ import org.spigotmc.event.entity.EntityDismountEvent;
 import java.util.List;
 import java.util.Map;
 
-/**
- * On leave of a vehicle
- */
 public class VehicleLeaveListener extends SulfuVListener {
 
     public VehicleLeaveListener() {
@@ -37,9 +34,9 @@ public class VehicleLeaveListener extends SulfuVListener {
         player = (Player) event.getEntity();
 
         if (!VehicleUtils.isVehicle(entity)) return;
-        if (!entity.getCustomName().contains("MTVEHICLES_MAINSEAT_")) return;
+        if (!entity.getCustomName().contains("svehicles_MAINSEAT_")) return;
         String license = VehicleUtils.getLicensePlate(entity);
-        if (VehicleData.autostand.get("MTVEHICLES_MAIN_" + license) == null) return;
+        if (VehicleData.autostand.get("svehicles_MAIN_" + license) == null) return;
 
         VehicleLeaveEvent api = (VehicleLeaveEvent) getAPI();
         api.setLicensePlate(license);
@@ -51,28 +48,26 @@ public class VehicleLeaveListener extends SulfuVListener {
         Vehicle vehicle = VehicleUtils.getVehicle(license);
 
         if (vehicle.getVehicleType().isHelicopter()) {
-            ArmorStand blades = VehicleData.autostand.get("MTVEHICLES_WIEKENS_" + license);
+            ArmorStand blades = VehicleData.autostand.get("svehicles_WIEKENS_" + license);
             Location locBelow = new Location(blades.getLocation().getWorld(), blades.getLocation().getX(), blades.getLocation().getY() - 0.2, blades.getLocation().getZ(), blades.getLocation().getYaw(), blades.getLocation().getPitch());
             blades.setGravity(locBelow.getBlock().getType().equals(Material.AIR));
         }
 
-        //If a helicopter is 'extremely falling' and player manages to leave it beforehand
         if (vehicle.getVehicleType().isHelicopter() && (boolean) ConfigModule.defaultConfig.get(DefaultConfig.Option.EXTREME_HELICOPTER_FALL) && !entity.isOnGround()) {
-            VehicleData.fallDamage.put(license, true); //Do not damage when entering afterwards
+            VehicleData.fallDamage.put(license, true);
         }
 
         BossBarUtils.removeBossBar(player, license);
-        ArmorStand standMain = VehicleData.autostand.get("MTVEHICLES_MAIN_" + license);
-        ArmorStand standSkin = VehicleData.autostand.get("MTVEHICLES_SKIN_" + license);
+        ArmorStand standMain = VehicleData.autostand.get("svehicles_MAIN_" + license);
+        ArmorStand standSkin = VehicleData.autostand.get("svehicles_SKIN_" + license);
         standMain.setGravity(true);
         standSkin.setGravity(true);
         List<Map<String, Integer>> seats = (List<Map<String, Integer>>) vehicle.getVehicleData().get("seats");
         for (int i = 2; i <= seats.size(); i++) {
-            if (VehicleData.autostand.get("MTVEHICLES_SEAT" + i + "_" + license) != null)
-                VehicleData.autostand.get("MTVEHICLES_SEAT" + i + "_" + license).remove();
+            if (VehicleData.autostand.get("svehicles_SEAT" + i + "_" + license) != null)
+                VehicleData.autostand.get("svehicles_SEAT" + i + "_" + license).remove();
         }
-        VehicleData.type.remove(license); //.remove(license+"b") used to be here... why? maybe i'm missing something?
-
+        VehicleData.type.remove(license);
         if ((boolean) ConfigModule.defaultConfig.get(DefaultConfig.Option.FUEL_ENABLED) && (boolean) ConfigModule.vehicleDataConfig.get(license, VehicleDataConfig.Option.FUEL_ENABLED)) {
             double fuel = VehicleData.fuel.get(license);
             ConfigModule.vehicleDataConfig.set(license, VehicleDataConfig.Option.FUEL, fuel);

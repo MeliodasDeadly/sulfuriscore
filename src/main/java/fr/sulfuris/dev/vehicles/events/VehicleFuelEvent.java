@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVEvent;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 
-/**
- * On vehicle refuel
- */
 public class VehicleFuelEvent extends SulfuVEvent implements IsCancellable, HasVehicle, HasJerryCan {
     final private double vehicleFuel;
     final private int jerryCanFuel;
@@ -53,12 +50,7 @@ public class VehicleFuelEvent extends SulfuVEvent implements IsCancellable, HasV
         return jerryCanSize;
     }
 
-    /**
-     * Get the current fuel of the vehicle (before the event is executed)
-     *
-     * @return Fuel of the vehicle
-     */
-    public double getVehicleFuel() {
-        return vehicleFuel;
-    }
+        public double getVehicleFuel() {
+            return vehicleFuel;
+        }
 }

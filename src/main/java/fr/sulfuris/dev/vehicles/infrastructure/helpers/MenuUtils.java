@@ -18,22 +18,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-/**
- * Methods used in plugin's GUIs
- */
 public class MenuUtils {
-    /**
-     * Page opened in the restore menu
-     */
     public static HashMap<Player, Integer> restorePage = new HashMap<>();
-    /**
-     * UUID of the player whose vehicles are in the restore menu
-     */
     public static HashMap<Player, UUID> restoreUUID = new HashMap<>();
 
-    /**
-     * Get the item which is clicked for getting to a previous menu
-     */
     public static ItemStack getBackItem() {
         return ItemUtils.getMenuItem(
                 "OAK_DOOR",
@@ -45,9 +33,6 @@ public class MenuUtils {
         );
     }
 
-    /**
-     * Get the item which is clicked for closing a menu
-     */
     public static ItemStack getCloseItem() {
         return ItemUtils.getMenuItem(
                 Material.BARRIER,
@@ -57,13 +42,10 @@ public class MenuUtils {
         );
     }
 
-    /**
-     * Open /vehicle edit menu to a player
-     */
     public static void menuEdit(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, InventoryTitle.VEHICLE_SETTINGS_MENU.getStringTitle());
         NBTItem nbt = new NBTItem(p.getInventory().getItemInMainHand());
-        String licensePlate = nbt.getString("mtvehicles.kenteken");
+        String licensePlate = nbt.getString("svehicles.kenteken");
 
         boolean isGlowing = (boolean) ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.IS_GLOWING);
         String name = ConfigModule.vehicleDataConfig.get(licensePlate, VehicleDataConfig.Option.NAME).toString();
@@ -75,7 +57,6 @@ public class MenuUtils {
         inv.setItem(10, ItemUtils.getMenuCustomItem(ItemUtils.getMaterial(skinItem), "&6" + msg.getMessage(Message.EDIT_NAME), skinDamage, String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), name)));
         inv.setItem(13, ItemUtils.getMenuItem(Material.PAPER, 1, "&6" + msg.getMessage(Message.EDIT_LICENSE_PLATE), String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), licensePlate)));
         if (isGlowing)
-            //inv.setItem(16, ItemUtils.glowItem("BOOK", "&6" + msg.getMessage(Message.TOGGLE_GLOW), String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), msg.getMessage(Message.TURNED_ON))));
             inv.setItem(16, ItemUtils.getMenuGlowingItem(Material.BOOK, 1, "&6" + msg.getMessage(Message.TOGGLE_GLOW), String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), msg.getMessage(Message.TURNED_ON))));
         else
             inv.setItem(16, ItemUtils.getMenuItem(Material.BOOK, 1, "&6" + msg.getMessage(Message.TOGGLE_GLOW), String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), msg.getMessage(Message.TURNED_OFF))));
@@ -92,19 +73,16 @@ public class MenuUtils {
     }
 
     private static void DrawOptions(Player p, Inventory inv, ItemStack option1, ItemStack option2, ItemStack option3) {
-        inv.setItem(10, new ItemFactory(option1).setNBT("mtvehicles.item", "1").toItemStack());
-        inv.setItem(13, new ItemFactory(option2).setNBT("mtvehicles.item", "2").toItemStack());
-        inv.setItem(16, new ItemFactory(option3).setNBT("mtvehicles.item", "3").toItemStack());
+        inv.setItem(10, new ItemFactory(option1).setNBT("svehicles.item", "1").toItemStack());
+        inv.setItem(13, new ItemFactory(option2).setNBT("svehicles.item", "2").toItemStack());
+        inv.setItem(16, new ItemFactory(option3).setNBT("svehicles.item", "3").toItemStack());
         DrawOptions(p, inv);
     }
 
-    /**
-     * Open fuel edit menu to a player
-     */
     public static void benzineEdit(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, InventoryTitle.VEHICLE_FUEL_MENU.getStringTitle());
         NBTItem nbt = new NBTItem(p.getInventory().getItemInMainHand());
-        String licensePlate = nbt.getString("mtvehicles.kenteken");
+        String licensePlate = nbt.getString("svehicles.kenteken");
 
         Vehicle vehicle = VehicleUtils.getVehicle(licensePlate);
         if (vehicle == null) return;
@@ -121,13 +99,10 @@ public class MenuUtils {
         DrawOptions(p, inv, option1, option2, option3);
     }
 
-    /**
-     * Open trunk edit menu to a player
-     */
     public static void trunkEdit(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, InventoryTitle.VEHICLE_TRUNK_MENU.getStringTitle());
         NBTItem nbt = new NBTItem(p.getInventory().getItemInMainHand());
-        String licensePlate = nbt.getString("mtvehicles.kenteken");
+        String licensePlate = nbt.getString("svehicles.kenteken");
         MessagesConfig msg = ConfigModule.messagesConfig;
 
         ItemStack option1;
@@ -140,13 +115,10 @@ public class MenuUtils {
         DrawOptions(p, inv, option1, option2, option3);
     }
 
-    /**
-     * Open members edit menu to a player
-     */
     public static void membersEdit(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, InventoryTitle.VEHICLE_MEMBERS_MENU.getStringTitle());
         NBTItem nbt = new NBTItem(p.getInventory().getItemInMainHand());
-        String licensePlate = nbt.getString("mtvehicles.kenteken");
+        String licensePlate = nbt.getString("svehicles.kenteken");
 
         Vehicle vehicle = VehicleUtils.getVehicle(licensePlate);
         if (vehicle == null) return;
@@ -157,13 +129,10 @@ public class MenuUtils {
         DrawOptions(p, inv, option1, option2, option3);
     }
 
-    /**
-     * Open speed edit menu to a player
-     */
     public static void speedEdit(Player p) {
         Inventory inv = Bukkit.createInventory(null, 45, InventoryTitle.VEHICLE_SPEED_MENU.getStringTitle());
         NBTItem nbt = new NBTItem(p.getInventory().getItemInMainHand());
-        String licensePlate = nbt.getString("mtvehicles.kenteken");
+        String licensePlate = nbt.getString("svehicles.kenteken");
 
         VehicleDataConfig data = ConfigModule.vehicleDataConfig;
         MessagesConfig msg = ConfigModule.messagesConfig;
@@ -217,18 +186,15 @@ public class MenuUtils {
                 String.format("&7%s: &e%s", msg.getMessage(Message.CURRENTLY), data.get(licensePlate, VehicleDataConfig.Option.MAX_SPEED_BACKWARDS))
         );
 
-        inv.setItem(10, new ItemFactory(option1).setNBT("mtvehicles.item", "1").toItemStack());
-        inv.setItem(11, new ItemFactory(option2).setNBT("mtvehicles.item", "2").toItemStack());
-        inv.setItem(12, new ItemFactory(option3).setNBT("mtvehicles.item", "3").toItemStack());
-        inv.setItem(13, new ItemFactory(option4).setNBT("mtvehicles.item", "4").toItemStack());
-        inv.setItem(14, new ItemFactory(option5).setNBT("mtvehicles.item", "5").toItemStack());
-        inv.setItem(15, new ItemFactory(option6).setNBT("mtvehicles.item", "6").toItemStack());
+        inv.setItem(10, new ItemFactory(option1).setNBT("svehicles.item", "1").toItemStack());
+        inv.setItem(11, new ItemFactory(option2).setNBT("svehicles.item", "2").toItemStack());
+        inv.setItem(12, new ItemFactory(option3).setNBT("svehicles.item", "3").toItemStack());
+        inv.setItem(13, new ItemFactory(option4).setNBT("svehicles.item", "4").toItemStack());
+        inv.setItem(14, new ItemFactory(option5).setNBT("svehicles.item", "5").toItemStack());
+        inv.setItem(15, new ItemFactory(option6).setNBT("svehicles.item", "6").toItemStack());
         DrawOptions(p, inv);
     }
 
-    /**
-     * Open vehicle choice menu to a player
-     */
     public static void getvehicleCMD(Player p, int page, int slot) {
         List<Map<?, ?>> vehicles = ConfigModule.vehiclesConfig.getVehicles();
         List<Map<?, ?>> skins = (List<Map<?, ?>>) vehicles.get(slot).get("cars");
@@ -263,13 +229,6 @@ public class MenuUtils {
         p.openInventory(inv);
     }
 
-    /**
-     * Open /vehicle restore menu to a player
-     *
-     * @param p         Player
-     * @param page      Page
-     * @param ownerUUID UUID of the owner whose vehicles are displayed
-     */
     public static void restoreCMD(Player p, int page, UUID ownerUUID) {
         Inventory inv = Bukkit.createInventory(null, 54, InventoryTitle.VEHICLE_RESTORE_MENU.getStringTitle());
         ConfigModule.configList.forEach(Config::reload);

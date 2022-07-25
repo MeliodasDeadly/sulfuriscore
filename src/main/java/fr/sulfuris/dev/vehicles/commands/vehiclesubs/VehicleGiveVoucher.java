@@ -9,9 +9,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * <b>/vehicle givevoucher %player% %uuid%</b> - add a vehicle voucher to a player.
- */
 public class VehicleGiveVoucher extends SulfuVehicleSubCommand {
     public VehicleGiveVoucher() {
         this.setPlayerCommand(false);
@@ -19,7 +16,7 @@ public class VehicleGiveVoucher extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.givevoucher")) return true;
+        if (!checkPermission("svehicles.givevoucher")) return true;
 
         if (arguments.length != 3) {
             sendMessage(Message.USE_GIVE_VOUCHER);

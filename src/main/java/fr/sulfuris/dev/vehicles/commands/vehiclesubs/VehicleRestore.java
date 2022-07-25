@@ -7,9 +7,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVehicleSubCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-/**
- * <b>/vehicle restore (%player%)</b> - open a GUI menu of all vehicles in database (vehicleData.yml), their owner may be specified.
- */
 public class VehicleRestore extends SulfuVehicleSubCommand {
     public VehicleRestore() {
         this.setPlayerCommand(true);
@@ -17,7 +14,7 @@ public class VehicleRestore extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        if (!checkPermission("mtvehicles.restore")) return true;
+        if (!checkPermission("svehicles.restore")) return true;
 
         sendMessage(Message.MENU_OPEN);
 

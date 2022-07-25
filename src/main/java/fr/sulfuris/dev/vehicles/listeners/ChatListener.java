@@ -19,19 +19,13 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import static fr.sulfuris.dev.main.schedulerRun;
 
 
-/**
- * On player chat
- */
 public class ChatListener extends SulfuVListener {
 
     public ChatListener() {
         super(new ChatEvent());
     }
 
-    /**
-     * Changing a license plate with /vehicle edit
-     */
-    @EventHandler(priority = EventPriority.HIGH)
+        @EventHandler(priority = EventPriority.HIGH)
     public void onLicensePlateChange(AsyncPlayerChatEvent event) {
         this.event = event;
         player = event.getPlayer();
@@ -89,9 +83,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's name with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onVehicleNameChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -136,9 +127,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's fuel amount with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onFuelChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -189,9 +177,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's fuel consumption with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onFuelUsageChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -235,9 +220,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle trunk's number of rows with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onTrunkRowsChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -289,9 +271,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's acceleration speed with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onAccelerationSpeedChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -334,9 +313,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's maximum speed with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onMaxSpeedChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -380,9 +356,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's braking speed with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onBrakingSpeedChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -426,9 +399,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's friction with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onFrictionSpeedChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -472,9 +442,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's maximum backwards speed with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onMaxSpeedBackwardsChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -518,9 +485,6 @@ public class ChatListener extends SulfuVListener {
         });
     }
 
-    /**
-     * Changing vehicle's rotation speed with /vehicle edit
-     */
     @EventHandler(priority = EventPriority.HIGH)
     public void onRotateSpeedChange(final AsyncPlayerChatEvent event) {
         this.event = event;
@@ -584,14 +548,8 @@ public class ChatListener extends SulfuVListener {
         return true;
     }
 
-    /**
-     * Get license plate of player's held vehicle
-     *
-     * @param player Player
-     * @return License plate of player's held vehicle
-     */
     private String getLicensePlate(Player player) {
         NBTItem nbt = new NBTItem(player.getInventory().getItemInMainHand());
-        return nbt.getString("mtvehicles.kenteken");
+        return nbt.getString("svehicles.kenteken");
     }
 }

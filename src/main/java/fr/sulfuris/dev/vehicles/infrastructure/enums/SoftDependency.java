@@ -1,8 +1,5 @@
 package fr.sulfuris.dev.vehicles.infrastructure.enums;
 
-/**
- * Supported soft-dependencies
- */
 public enum SoftDependency {
     WORLD_GUARD("WorldGuard"),
     VAULT("Vault"),
@@ -14,10 +11,7 @@ public enum SoftDependency {
         this.name = name;
     }
 
-    /**
-     * Get soft-dependency's name
-     */
-    public String getName() {
-        return name;
-    }
+        public String getName() {
+            return name;
+        }
 }

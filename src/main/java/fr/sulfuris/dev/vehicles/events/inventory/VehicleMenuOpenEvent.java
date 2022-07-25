@@ -6,19 +6,11 @@ import fr.sulfuris.dev.vehicles.infrastructure.enums.InventoryTitle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVEvent;
 import org.bukkit.entity.Player;
 
-/**
- * On /vehicle menu open
- */
 public class VehicleMenuOpenEvent extends SulfuVEvent implements IsCancellable, HasInventory {
 
-    /**
-     * Default constructor with a player (calls {@link SulfuVEvent#setPlayer(Player)}).
-     *
-     * @param player Player
-     */
-    public VehicleMenuOpenEvent(Player player) {
-        setPlayer(player);
-    }
+        public VehicleMenuOpenEvent(Player player) {
+            setPlayer(player);
+        }
 
     @Override
     public void setCancelled(boolean cancelled) {

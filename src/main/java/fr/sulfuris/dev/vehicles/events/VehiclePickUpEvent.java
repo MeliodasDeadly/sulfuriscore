@@ -6,9 +6,6 @@ import fr.sulfuris.dev.vehicles.infrastructure.models.SulfuVEvent;
 import fr.sulfuris.dev.vehicles.infrastructure.models.Vehicle;
 import fr.sulfuris.dev.vehicles.infrastructure.models.VehicleUtils;
 
-/**
- * On vehicle pick up
- */
 public class VehiclePickUpEvent extends SulfuVEvent implements IsCancellable, HasVehicle {
     private String licensePlate;
 
