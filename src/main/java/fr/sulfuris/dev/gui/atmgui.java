@@ -100,8 +100,8 @@ public class atmgui implements Listener {
                 new AnvilGUI.Builder()
                         .onComplete((player, text) -> {                                    //called when the inventory output slot is clicked
                             if(text.equalsIgnoreCase(valueOf(data.get(new NamespacedKey(main.getPlugin(), "password"), PersistentDataType.STRING)))) {
-                                player.openInventory(inv);
                                 event.setCancelled(true);
+                                player.openInventory(inv);
                                 return AnvilGUI.Response.close();
                             } else {
                                 return AnvilGUI.Response.text("Incorrect.");
