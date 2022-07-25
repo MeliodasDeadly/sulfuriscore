@@ -1,6 +1,6 @@
 package fr.sulfuris.dev.vehicles.infrastructure.modules;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import fr.sulfuris.dev.vehicles.infrastructure.annotations.VersionSpecific;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.PluginVersion;
 import fr.sulfuris.dev.vehicles.infrastructure.enums.ServerVersion;
@@ -20,10 +20,10 @@ public class VersionModule {
     @Setter
     VersionModule instance;
     private static String serverVersion;
-    private Logger logger = Main.instance.getLogger();
+    private Logger logger = main.instance.getLogger();
 
     public VersionModule() {
-        PluginDescriptionFile pdf = Main.instance.getDescription();
+        PluginDescriptionFile pdf = main.instance.getDescription();
         pluginVersionString = pdf.getVersion();
         pluginVersion = PluginVersion.getPluginVersion();
 
@@ -43,8 +43,9 @@ public class VersionModule {
         if (getServerVersion() == null) {
             logger.severe("--------------------------");
             logger.severe("Your Server version is not supported. The plugin will NOT load.");
-            logger.severe("Check the supported versions here: https:            logger.severe("--------------------------");
-                    Main.disablePlugin();
+            logger.severe("Check the supported versions here: https:");
+            logger.severe("--------------------------");
+            main.disablePlugin();
             logger.severe("Check the supported versions here: https://wiki.mtvehicles.eu/faq.html");
             logger.severe("--------------------------");
             main.disablePlugin();

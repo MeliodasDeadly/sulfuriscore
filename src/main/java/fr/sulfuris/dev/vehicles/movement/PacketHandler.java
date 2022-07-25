@@ -9,15 +9,17 @@ import org.bukkit.entity.Player;
 
 import java.util.NoSuchElementException;
 
+import static fr.sulfuris.dev.vehicles.infrastructure.modules.VersionModule.getServerVersion;
+
 @VersionSpecific
 public class PacketHandler {
 
-        public static void movement_1_16(Player player) {
-            ChannelDuplexHandler channelDuplexHandler = new ChannelDuplexHandler() {
-                @Override
-                public void channelRead(ChannelHandlerContext channelHandlerContext, Object packet) throws Exception {
-                    super.channelRead(channelHandlerContext, packet);
-                    if (packet instanceof net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle) {
+    public static void movement_1_16(Player player) {
+        ChannelDuplexHandler channelDuplexHandler = new ChannelDuplexHandler() {
+            @Override
+            public void channelRead(ChannelHandlerContext channelHandlerContext, Object packet) throws Exception {
+                super.channelRead(channelHandlerContext, packet);
+                if (packet instanceof net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle) {
                         net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle ppisv = (net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle) packet;
                         VehicleMovement movement = new VehicleMovement();
                         movement.vehicleMovement(player, ppisv);
@@ -39,7 +41,8 @@ public class PacketHandler {
 
     @VersionSpecific
     public static boolean isObjectPacket(Object object) {
-        final String errorMessage = "An unexpected error occurred. Try reinstalling the plugin or contact the developer: https:        if (getServerVersion().is1_16()) {
+        final String errorMessage = "An unexpected error occurred. Try reinstalling the plugin or contact the developer: https:";
+        if (getServerVersion().is1_16()) {
             if (!(object instanceof net.minecraft.server.v1_16_R3.PacketPlayInSteerVehicle)) {
                 main.logSevere(errorMessage);
                 return false;

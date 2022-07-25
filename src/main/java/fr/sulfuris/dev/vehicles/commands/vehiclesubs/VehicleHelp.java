@@ -15,7 +15,7 @@ public class VehicleHelp extends SulfuVehicleSubCommand {
 
     @Override
     public boolean execute() {
-        sendMessage(String.format("&2&lSulfurisVehicles commandes: (%s)", Main.instance.getDescription().getVersion()));
+        sendMessage(String.format("&2&lSulfurisVehicles commandes: (%s)", main.instance.getDescription().getVersion()));
         sendMessage("");
         sendMessage(String.format("&2/svehicles &ainfo &f- &2%s", desc(Message.HELP_INFO)));
         sendMessage(String.format("&2/svehicles &apublic &f- &2%s", desc(Message.HELP_PUBLIC)));

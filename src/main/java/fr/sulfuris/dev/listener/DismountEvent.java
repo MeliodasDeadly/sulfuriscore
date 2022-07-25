@@ -1,14 +1,14 @@
 package fr.sulfuris.dev.listener;
 
-import fr.sulfuris.dev.Main;
+import fr.sulfuris.dev.main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
 public class DismountEvent implements Listener {
-    private final Main plugin;
+    private final main plugin;
 
-    public DismountEvent(final Main plugin) {
+    public DismountEvent(final main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

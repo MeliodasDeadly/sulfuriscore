@@ -1,6 +1,6 @@
 name: Sulfuris
 version: '${project.version}'
-main: fr.sulfuris.dev.Main
+main: fr.sulfuris.dev.main
 api-version: 1.16
 description: Sulfuris plugin made for minecraft roleplay
 author: D3adPlaysVR, Meliodouil

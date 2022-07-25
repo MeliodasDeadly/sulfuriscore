@@ -27,7 +27,8 @@ import java.util.zip.GZIPOutputStream;
 public class Metrics {
 
     public static final int B_STATS_VERSION = 1;
-    private static final String URL = "https:    private static boolean logFailedRequests;
+    private static final String URL = "https:";
+    private static boolean logFailedRequests;
     private static boolean logSentData;
     private static boolean logResponseStatusText;
     private static String serverUUID;
@@ -71,7 +72,7 @@ public class Metrics {
                     "bStats collects some data for plugin authors like how many servers are using their plugins.\n" +
                             "To honor their work, you should not disable it.\n" +
                             "This has nearly no effect on the server performance!\n" +
-                            "Check out https:            ).copyDefaults(true);
+                            "Check out https:").copyDefaults(true);
             try {
                 config.save(configFile);
             } catch (IOException ignored) {
