@@ -1,17 +1,16 @@
 package fr.sulfuris.dev.commands.shop;
 
-import fr.sulfuris.dev.itemstack.shop.key.*;
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import fr.sulfuris.dev.itemstack.shop.*;
-public class LevelCommand implements CommandExecutor {
-    private main plugin;
 
-    public LevelCommand(final main plugin) {
+public class LevelCommand implements CommandExecutor {
+    private Main plugin;
+
+    public LevelCommand(final Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("givelevel").setExecutor((CommandExecutor) this);
     }

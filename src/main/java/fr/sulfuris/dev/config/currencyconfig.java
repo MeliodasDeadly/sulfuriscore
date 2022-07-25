@@ -1,8 +1,8 @@
 package fr.sulfuris.dev.config;
 
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 public class currencyconfig {
-    public static void setConfig(main plugin) {
+    public static void setConfig(Main plugin) {
         if (!plugin.config.contains("currency")) {
             plugin.config.createSection("currency");
         }

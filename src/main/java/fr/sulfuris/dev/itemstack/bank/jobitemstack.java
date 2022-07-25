@@ -1,7 +1,6 @@
 package fr.sulfuris.dev.itemstack.bank;
 
 import fr.sulfuris.dev.data.StoringData;
-import fr.sulfuris.dev.main;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;

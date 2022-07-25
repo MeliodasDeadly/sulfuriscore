@@ -3,14 +3,15 @@ package fr.sulfuris.dev;
 
 import fr.sulfuris.dev.commands.admin.InfoCommand;
 import fr.sulfuris.dev.commands.admin.StoreCommand;
+import fr.sulfuris.dev.commands.admin.bank.bankCommand;
 import fr.sulfuris.dev.commands.admin.job.setjob;
 import fr.sulfuris.dev.commands.admin.money.giveCommand;
 import fr.sulfuris.dev.commands.admin.money.resetCommand;
 import fr.sulfuris.dev.commands.admin.money.setCommand;
 import fr.sulfuris.dev.commands.admin.removeCommand;
-import fr.sulfuris.dev.commands.admin.bank.bankCommand;
 import fr.sulfuris.dev.commands.money.GiveCommand;
 import fr.sulfuris.dev.commands.money.SetCommand;
+import fr.sulfuris.dev.commands.other.SitCommand;
 import fr.sulfuris.dev.commands.shop.KeyCommand;
 import fr.sulfuris.dev.commands.shop.PackageCommand;
 import fr.sulfuris.dev.config.currencyconfig;
@@ -21,7 +22,11 @@ import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.gui.atmgui;
 import fr.sulfuris.dev.listener.Joinlistener;
 import fr.sulfuris.dev.listener.deathlistener;
+import fr.sulfuris.dev.vehicles.infrastructure.modules.*;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
@@ -30,27 +35,79 @@ import java.util.logging.Level;
 import static fr.sulfuris.dev.data.DatabaseUser.dbSetup;
 
 
-public final class main extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
     public static FileConfiguration config;
+    final public static String configVersion = "2.4.0";
+    final public static String messagesVersion = "2.4.3-dev6";
+    public static Plugin instance;
+    private static Main plugin;
 
-    public main() {
+    public Main() {
         this.config = this.getConfig();
     }
 
-    public static main getPlugin() {
+    public static Main getPlugin() {
         return plugin;
     }
 
-    private static main plugin;
+    public static String getFileAsString() {
+        return String.valueOf(plugin.getFile());
+    }
 
+    public void createConfig() {
+        this.getLogger().log(Level.INFO, Utils.chat("&aConfig not found, creating one"));
 
+        itemconfig.setConfig(this);
+        mainconfig.setConfig(this);
+        currencyconfig.setConfig(this);
+        listenerconfig.setConfig(this);
+        this.config.options().copyDefaults(true);
+        this.saveConfig();
+        this.reloadConfig();
+        this.getLogger().log(Level.INFO, Utils.chat("&aConfig reloaded"));
+    }
 
+    @Override
+    public void onDisable() {
+        this.getLogger().log(Level.INFO, Utils.chat("&aPlugin unloaded"));
+        this.getLogger().log(Level.INFO, Utils.chat("&a Goodbye &c&l<3"));
+    }
 
+    public static void disablePlugin() {
+        logSevere("Disabling the plugin (a critical bug might have occurred)...");
+        plugin.setEnabled(false);
+    }
+
+    public static void logInfo(String text) {
+        plugin.getLogger().info(text);
+    }
+
+    /**
+     * Log a warning to the console (yellow)
+     */
+    public static void logWarning(String text) {
+        plugin.getLogger().warning(text);
+    }
+
+    /**
+     * Log a message warning about a severe issue to the console (red)
+     */
+    public static void logSevere(String text) {
+        plugin.getLogger().severe(text);
+    }
+
+    /**
+     * Run a task using a bukkit scheduler
+     */
+    public static void schedulerRun(Runnable task) {
+        Bukkit.getScheduler().runTask(plugin, task);
+    }
 
     @Override
     public void onEnable() {
         plugin = this;
+        instance = this;
         this.getLogger().log(Level.INFO, Utils.chat("----------------------------------------------"));
         this.getLogger().log(Level.INFO, Utils.chat("&aLoading Items"));
 
@@ -97,10 +154,14 @@ public final class main extends JavaPlugin {
         new resetCommand(this);
         new setCommand(this);
         new Joinlistener(this);
+        new atmgui(this);
+        new SitCommand(this);
 
-
-
-
+        new CommandModule();
+        new ListenersModule();
+        new MetricsModule();
+        new LoopModule();
+        new ConfigModule();
 
 
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));
@@ -121,22 +182,13 @@ public final class main extends JavaPlugin {
 
     }
 
-    public void createConfig() {
-        this.getLogger().log(Level.INFO, Utils.chat("&aConfig not found, creating one"));
-
-        itemconfig.setConfig(this);
-        mainconfig.setConfig(this);
-        currencyconfig.setConfig(this);
-        listenerconfig.setConfig(this);
-        this.config.options().copyDefaults(true);
-        this.saveConfig();
-        this.reloadConfig();
-        this.getLogger().log(Level.INFO, Utils.chat("&aConfig reloaded"));
-    }
-
     @Override
-    public void onDisable() {
-        this.getLogger().log(Level.INFO, Utils.chat("&aPlugin unloaded"));
-        this.getLogger().log(Level.INFO, Utils.chat("&a Goodbye &c&l<3"));
+    public void onLoad() {
+        new DependencyModule();
     }
+
+    public void registerListener(Listener listener) {
+        Bukkit.getPluginManager().registerEvents(listener, this);
+    }
+
 }

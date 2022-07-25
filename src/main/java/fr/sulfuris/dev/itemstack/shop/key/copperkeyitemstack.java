@@ -1,11 +1,7 @@
 package fr.sulfuris.dev.itemstack.shop.key;
 
-import fr.sulfuris.dev.items.shop.key.copperkey;
-import fr.sulfuris.dev.main;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

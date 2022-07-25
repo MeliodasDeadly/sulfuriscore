@@ -1,18 +1,17 @@
 package fr.sulfuris.dev.items.shop.key;
 
-import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.Main;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class goldkey implements Listener {
 
-    public main plugin;
+    public Main plugin;
 
-    public goldkey(final main plugin) {
+    public goldkey(final Main plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

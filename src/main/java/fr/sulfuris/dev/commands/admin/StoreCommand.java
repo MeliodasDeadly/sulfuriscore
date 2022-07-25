@@ -1,7 +1,7 @@
 package fr.sulfuris.dev.commands.admin;
 
+import fr.sulfuris.dev.Main;
 import fr.sulfuris.dev.data.Utils;
-import fr.sulfuris.dev.main;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,9 +13,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 public class StoreCommand implements CommandExecutor {
-    public main plugin;
+    public Main plugin;
 
-    public StoreCommand(final main plugin) {
+    public StoreCommand(final Main plugin) {
         this.plugin = plugin;
         plugin.getCommand("store").setExecutor((CommandExecutor) this);
     }

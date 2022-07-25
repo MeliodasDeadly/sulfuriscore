@@ -1,0 +1,99 @@
+autoUpdate: true
+vehicleMenuSize: 3
+helicopterBladesAlwaysOn: true
+disablePickupFromWater: false
+trunkEnabled: true
+putOneselfAsOwner: false
+carPickup: false
+
+# --- Steering ---
+usePlayerFacing: true
+
+# --- Vehicle Health and Damage ---
+damageEnabled: true
+damageMultiplier: 0.5
+
+# --- Helicopters & Planes
+maxFlyingHeight: 150
+takeOffSpeed: 0.4
+extremeHelicopterFall: true
+helicopterFallDamage: 40.0
+
+# --- Gas ---
+fuelEnabled: true
+fuelMultiplier: 1
+jerrycans:
+  - 25
+  - 50
+  - 75
+
+# --- Horn ---
+hornCooldown: 5
+hornType: "sulfuris.claxon"
+
+# --- Tanks ---
+tankTNT: true
+tankCooldown: 10
+
+# --- Driving ---
+#slabs, blocks or both
+driveUp: 'both'
+driveOnCarpets: true
+
+# --- Blocks and worlds ---
+blockWhitelist:
+  enabled: false
+  list:
+    - GRAY_CONCRETE
+
+# Provide a list of worlds where using vehicles is disabled.
+disabledWorlds: [ ]
+
+
+# ----- OPTIONS BELOW REQUIRE SOFT-DEPENDENCIES -----
+
+# Enables WorldGuard region based gas stations.
+# If you do not have WORLDGUARD installed, this is automatically DISABLED.
+
+# If enabled = false, stuff bellow will be ignored.
+# Set 'canUseJerryCanOutsideOfGasStation' to false and players will only be able to use jerry cans in gas station regions. (Gas Stations must be enabled!)
+# If this option is true, players still CAN'T use jerrycans in regions with flag "mtv-gasstation=deny".
+
+# The 'fillJeryCans' option enables players to fill their JerryCans by right clicking on a lever/tripwire hook. This lever/tripwire hook HAS TO BE INSIDE A GAS STATION REGION.
+# Shift and right click to fill the whole jerrycan.
+# If needPermission inside fillJeryCan is set to true, players need to have the 'mtvehicles.filljerrycans' permission. Otherwise everyone can do it.
+
+# The 'price' option may ONLY be used if you have VAULT installed. (If that is not the case, it is automatically DISABLED).
+# Price MUST always be greater than 0. Otherwise, default (30.0) shall be used.
+# Players with permission 'mtvehicles.filljerrycansforfree' do not pay.
+# BEWARE: If needPermission = true, players STILL NEED permission to even use this feature. Even if they have to pay.
+
+# All the regions MUST have WorldGuard flag "mtv-gasstation=allow".
+gasStations:
+  enabled: false
+  canUseJerryCanOutsideOfGasStation: true
+  fillJerryCans:
+    enabled: true
+    needPermission: false
+    playSound: true
+    lever: true
+    tripwireHook: false
+    price:
+      enabled: true
+      pricePerLitre: 30.0
+
+# Whether vehicles can/can't be used in certain regions.
+# If you do not have WorldGuard installed, this is automatically DISABLED.
+# The PICKUP section is quite hazardous. You might not be able to pick up vehicles freely. Use cautiously.
+
+# Acceptable inputs:
+# - 'disabled' (default) -> players can place/enter/pick up vehicles wherever they want
+# - 'blacklist' -> players CAN'T place/enter/pick up vehicles in regions where flags 'mtv-place', 'mtv-enter', and 'mtv-pickup' are DENIED.
+# - 'whitelist' -> players CAN ONLY place/enter/pick up vehicles in region where flags 'mtv-place', 'mtv-enter', and 'mtv-pickup' are ALLOWED.
+# (If your input is not recognized, the default shall be used.)
+regionActions:
+  place: 'disabled'
+  enter: 'disabled'
+  pickup: 'disabled'
+
+  # -----Vehicle Config END-----
