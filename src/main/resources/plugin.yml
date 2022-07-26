@@ -127,5 +127,13 @@ commands:
       - sit
     permission: sulfuris.sit
     permission-message: You don't have permission to use this command.
+  givekeypad:
+    description: Give keypad to player
+    usage: /givekeypad <player>
+    aliases:
+      - givekeypad
+      - keypadgive
+    permission-message: You don't have permission to use this command.
+    permission: sulfuris.keypadgiver
 
 

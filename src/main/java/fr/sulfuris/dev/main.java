@@ -5,6 +5,7 @@ import fr.sulfuris.dev.commands.admin.InfoCommand;
 import fr.sulfuris.dev.commands.admin.StoreCommand;
 import fr.sulfuris.dev.commands.admin.bank.bankCommand;
 import fr.sulfuris.dev.commands.admin.job.setjob;
+import fr.sulfuris.dev.commands.admin.keypad.keypadCommand;
 import fr.sulfuris.dev.commands.admin.money.giveCommand;
 import fr.sulfuris.dev.commands.admin.money.resetCommand;
 import fr.sulfuris.dev.commands.admin.money.setCommand;
@@ -142,6 +143,7 @@ public final class main extends JavaPlugin {
         new atmgui(this);
         new SitCommand(this);
         new DismountEvent(this);
+        new keypadCommand(this);
 
         new CommandModule();
         new ListenersModule();
