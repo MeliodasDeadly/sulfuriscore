@@ -36,23 +36,21 @@ public class Joinlistener implements Listener {
     public void onJoin(org.bukkit.event.player.PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PersistentDataContainer data = player.getPersistentDataContainer();
-        if(data.get(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER)){
+        if(!data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.STRING)){
             StoringData.money(player);
             plugin.getLogger().log(Level.INFO, Utils.chat("§aPlayer " + event.getPlayer().getName() + " has been added to the database"));
         }else{
             plugin.getLogger().log(Level.INFO, Utils.chat("§aPlayer " + event.getPlayer().getName() + " est déjà danns la database"));
         }
-        if(data.get(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER)){
+        if(!data.has(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.STRING)){
             StoringData.job(player);
             plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §ahas no job, setting to default job");
         }else{
             plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §aà déjà un métier.");
         }
 
-        if(player != null){
-            mainscoreboard.setscoreboard(event.getPlayer());
-            System.out.println("§aScoreboard mit pour " + player.getName() + ".");
-        }
+        mainscoreboard.setscoreboard(event.getPlayer());
+        System.out.println("§aScoreboard mit pour " + player.getName() + ".");
 
 
 
