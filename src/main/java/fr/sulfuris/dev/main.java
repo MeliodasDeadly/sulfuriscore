@@ -24,6 +24,7 @@ import fr.sulfuris.dev.gui.atmgui;
 import fr.sulfuris.dev.listener.DismountEvent;
 import fr.sulfuris.dev.listener.Joinlistener;
 import fr.sulfuris.dev.listener.deathlistener;
+import fr.sulfuris.dev.scoreboard.mainscoreboard;
 import fr.sulfuris.dev.vehicles.infrastructure.modules.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -154,6 +155,7 @@ public final class main extends JavaPlugin {
 
         this.getLogger().log(Level.INFO, Utils.chat("&aReload Config"));
         this.createConfig();
+        this.getLogger().log(Level.INFO, Utils.chat("&aLoading Scoreboard"));
 
         this.getLogger().log(Level.INFO, Utils.chat("&aMade with &c&l<3&a by D3adPlays and Meliodas"));
         this.getLogger().log(Level.INFO, Utils.chat("&aPlugin loaded"));

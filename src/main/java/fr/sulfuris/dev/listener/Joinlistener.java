@@ -5,6 +5,7 @@ import fr.sulfuris.dev.data.DatabaseUser;
 import fr.sulfuris.dev.data.Utils;
 import fr.sulfuris.dev.data.StoringData;
 import fr.sulfuris.dev.main;
+import fr.sulfuris.dev.scoreboard.mainscoreboard;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -46,6 +47,11 @@ public class Joinlistener implements Listener {
             plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §ahas no job, setting to default job");
         }else{
             plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §aà déjà un métier.");
+        }
+
+        if(player != null){
+            mainscoreboard.setscoreboard(event.getPlayer());
+            System.out.println("§aScoreboard mit pour " + player.getName() + ".");
         }
 
 
