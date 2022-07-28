@@ -38,10 +38,14 @@ public class Joinlistener implements Listener {
         if(data.get(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "money"), PersistentDataType.INTEGER)){
             StoringData.money(player);
             plugin.getLogger().log(Level.INFO, Utils.chat("§aPlayer " + event.getPlayer().getName() + " has been added to the database"));
+        }else{
+            plugin.getLogger().log(Level.INFO, Utils.chat("§aPlayer " + event.getPlayer().getName() + " est déjà danns la database"));
         }
         if(data.get(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER) == null || !data.has(new NamespacedKey(main.getPlugin(), "job"), PersistentDataType.INTEGER)){
             StoringData.job(player);
             plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §ahas no job, setting to default job");
+        }else{
+            plugin.getLogger().log(Level.INFO, "§aPlayer " + player.getName() + " §aà déjà un métier.");
         }
 
 

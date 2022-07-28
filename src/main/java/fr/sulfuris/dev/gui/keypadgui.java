@@ -1,25 +1,18 @@
 package fr.sulfuris.dev.gui;
 
 import fr.sulfuris.dev.data.Utils;
-import fr.sulfuris.dev.itemstack.bank.infoitemstack;
-import fr.sulfuris.dev.itemstack.bank.jobitemstack;
 import fr.sulfuris.dev.main;
 import net.wesjd.anvilgui.AnvilGUI;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-
-import javax.naming.Name;
 
 import static java.lang.String.valueOf;
 
@@ -99,7 +92,9 @@ public class keypadgui implements Listener {
                     }
 
 
-                    }
+                    }else {
+                return;
+            }
                 }
         }
     }
