@@ -48,7 +48,7 @@ public class keypadgui implements Listener {
                     String owner = playeri.getName();
 
                     if (keypad2.equalsIgnoreCase("true")) {
-                        if (owner2.equalsIgnoreCase(playeri.getName()) && !data2.has(new NamespacedKey(plugin, "password"))) {
+                        if (owner2.equalsIgnoreCase(playeri.getName()) && !data2.has(new NamespacedKey(plugin, "password"), PersistentDataType.STRING)) {
                             new AnvilGUI.Builder()
                                     .onComplete((player, text) -> {
                                         if (text.equalsIgnoreCase(null)) {
@@ -72,7 +72,7 @@ public class keypadgui implements Listener {
                                     .title("§7Connexion")
                                     .plugin(plugin)
                                     .open(playeri);
-                        }else if (data2.has(new NamespacedKey(plugin, "password"))) {
+                        }else if (data2.has(new NamespacedKey(plugin, "password"), PersistentDataType.STRING)) {
 
 
                             new AnvilGUI.Builder()
